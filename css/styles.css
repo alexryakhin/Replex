@@ -296,17 +296,15 @@ a:hover {
     align-items: center;
 }
 
-/* iPhone Screenshot Placeholder */
+/* iPhone Screenshot */
 .iphone-screenshot {
     width: 100%;
     max-width: 300px;
-    aspect-ratio: 9 / 19.5;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    position: relative;
-    overflow: hidden;
-    object-fit: cover;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
     display: block;
+    background-color: transparent;
 }
 
 /* Placeholder version (when used as div) */
@@ -416,9 +414,12 @@ a:hover {
     display: flex;
     gap: var(--spacing-md);
     overflow-x: auto;
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-md) var(--spacing-md);
+    margin: 0 calc(-1 * var(--spacing-md));
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    scroll-padding-left: var(--spacing-md);
+    scroll-padding-right: var(--spacing-md);
 }
 
 .screenshots-gallery::-webkit-scrollbar {
@@ -439,6 +440,14 @@ a:hover {
     flex: 0 0 auto;
     width: 280px;
     scroll-snap-align: start;
+}
+
+.screenshot-item .iphone-screenshot {
+    width: 100%;
+    max-width: 280px;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
 }
 
 /* CTA Section */
@@ -699,6 +708,9 @@ a:hover {
     .screenshots-gallery {
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
+        margin: 0 calc(-1 * var(--spacing-md));
+        scroll-padding-left: var(--spacing-md);
+        scroll-padding-right: var(--spacing-md);
     }
     
     .footer-content {
