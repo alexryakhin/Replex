@@ -763,6 +763,80 @@ a:hover {
     animation: fadeIn 0.6s ease-out;
 }
 
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: var(--dark-text-primary);
+        --text-secondary: var(--dark-text-secondary);
+        --text-tertiary: #86868B;
+        --bg-primary: var(--dark-bg-primary);
+        --bg-secondary: var(--dark-bg-secondary);
+        --bg-tertiary: #2C2C2E;
+        --border-color: #38383A;
+    }
+    
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+    
+    .header {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-bottom-color: var(--border-color);
+    }
+    
+    .hero {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    }
+    
+    .hero-text h1 {
+        background: linear-gradient(135deg, var(--text-primary) 0%, #5A6FE8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .feature-card {
+        background-color: var(--bg-secondary);
+    }
+    
+    .screenshots {
+        background-color: var(--bg-secondary);
+    }
+    
+    .screenshots-gallery::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+    }
+    
+    .footer {
+        background-color: var(--bg-secondary);
+        border-top-color: var(--border-color);
+    }
+    
+    .faq-item {
+        background-color: var(--bg-secondary);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        background-color: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent-blue-light);
+    }
+    
+    @media (max-width: 768px) {
+        .nav {
+            background-color: rgba(0, 0, 0, 0.98);
+            border-bottom-color: var(--border-color);
+        }
+    }
+}
+
 /* Utility Classes */
 .text-center {
     text-align: center;
