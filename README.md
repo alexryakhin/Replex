@@ -126,4 +126,3 @@ Copyright © 2025 Replex. All rights reserved.
 ---
 
 Made with ❤️ for fitness enthusiasts
-

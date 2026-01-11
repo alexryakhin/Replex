@@ -60,7 +60,7 @@ favicons/
    ```html
    <!-- Change from: -->
    <!-- <img src="favicons/logo.svg" alt="Replex Logo"> -->
-   
+
    <!-- To: -->
    <img src="favicons/logo.svg" alt="Replex Logo">
    ```
@@ -75,4 +75,3 @@ favicons/
 - **PNG is fine** if you don't have SVG (use 32x32px or 64x64px)
 - **ICO format** can be generated from PNG using online converters
 - Keep file sizes small for faster loading
-
