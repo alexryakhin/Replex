@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alexryakhin.github.io/Replex/sitemap.xml

@@ -16,12 +16,14 @@ Replex/
 ├── favicons/              # App icons and favicons
 ├── images/
 │   ├── icons/             # SVG icons for features
-│   └── screenshots/       # App screenshots (placeholder)
+│   └── screenshots/       # App screenshots used on website/App Store story flow
 ├── index.html             # Main landing page
 ├── faq.html               # Frequently Asked Questions
 ├── privacy.html           # Privacy Policy
 ├── support.html      # Support contact page
-└── terms.html              # Terms of Service
+├── terms.html              # Terms of Service
+├── robots.txt              # Search crawler directives
+└── sitemap.xml             # XML sitemap for indexing
 ```
 
 ## Features
@@ -40,12 +42,13 @@ Replex/
 - SEO-optimized meta tags
 - Accessible navigation and structure
 - Contact and support resources
+- Screenshot gallery aligned with App Store narrative
 
 ## Tech Stack
 
 - **HTML5**: Semantic markup
 - **CSS3**: Custom properties, flexbox, grid, responsive design
-- **No JavaScript**: Pure HTML/CSS implementation
+- **Vanilla JavaScript**: Mobile nav interaction and menu behavior
 - **Favicons**: Multiple sizes for various platforms
 
 ## Setup
@@ -108,10 +111,16 @@ The website uses CSS custom properties defined in `css/styles.css`. The primary 
 - `--accent-blue-dark: #082AA8`
 - `--accent-gradient: linear-gradient(135deg, #3854CF 0%, #082AA8 100%)`
 
-### Adding Screenshots
-Replace placeholder divs in `index.html` with actual screenshots:
-- Hero section: `images/screenshots/hero-screenshot.jpg`
-- Screenshots gallery: `images/screenshots/screenshot-1.jpg`, `screenshot-2.jpg`, `screenshot-3.jpg`
+### Screenshot Assets
+Primary screenshot set currently used:
+- `images/screenshots/home.png`
+- `images/screenshots/workout-details.png`
+- `images/screenshots/analytics-1.png`
+- `images/screenshots/analytics-2.png`
+- `images/screenshots/analytics-3.png`
+- `images/screenshots/template.png`
+- `images/screenshots/schedule.png`
+- `images/screenshots/share.png`
 
 ## Browser Support
 
@@ -121,7 +130,7 @@ Replace placeholder divs in `index.html` with actual screenshots:
 
 ## License
 
-Copyright © 2025 Replex. All rights reserved.
+Copyright © 2026 Replex. All rights reserved.
 
 ---
 
