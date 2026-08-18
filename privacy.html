@@ -63,7 +63,7 @@
     <main class="page-content">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p><strong>Last Updated:</strong> April 2026</p>
+            <p><strong>Last Updated:</strong> August 2026</p>
 
             <p>This Privacy Policy explains what information Replex collects, how it is used, and your choices when you use the Replex app and this website.</p>
 
@@ -95,13 +95,24 @@
                 <li><strong>Location:</strong> If enabled in the app and permitted by iOS, Replex may associate location data with workouts.</li>
             </ul>
 
+            <h3>1.5 AI Coach (Pro)</h3>
+            <p>If you use AI Coach, we process the following to provide coaching, scheduling proposals, and template edit proposals:</p>
+            <ul>
+                <li>Chat messages you send to the coach</li>
+                <li>Context sent with each turn: local date and time, timezone, optional profile and goals, template names and identifiers, optional workout focus, and <strong>tool results</strong> (workout and schedule data fetched on your device when the coach requests it)</li>
+                <li>A Firebase ID token to authenticate your session (used to verify your account and Pro subscription; we do not treat this as additional personal content beyond your account identifier)</li>
+            </ul>
+            <p><strong>Nothing is written to your calendar or templates from chat until you tap confirm on your device.</strong> Proposals are shown for review; you choose whether to apply them.</p>
+            <p>AI Coach output is not medical advice. See our <a href="terms.html">Terms of Service</a> for health and safety disclaimers.</p>
+
             <h2>2. How We Use Information</h2>
             <ul>
                 <li>Provide core workout tracking features and sync behavior</li>
                 <li>Enable subscriptions and premium feature access</li>
+                <li>Provide AI coaching, scheduling proposals, and template edit proposals (Pro)</li>
                 <li>Improve reliability, performance, and product decisions</li>
                 <li>Respond to support requests and troubleshoot issues</li>
-                <li>Maintain security and prevent abuse</li>
+                <li>Maintain security and prevent abuse (including rate limits and moderation for AI Coach)</li>
             </ul>
 
             <h2>3. Storage and Sync</h2>
@@ -113,9 +124,11 @@
                 <li><strong>Apple:</strong> App Store billing, iCloud/CloudKit sync, and Apple platform services</li>
                 <li><strong>Firebase (Google):</strong> Analytics, crash diagnostics, remote configuration, authentication, and cloud data services</li>
                 <li><strong>RevenueCat:</strong> Subscription and entitlement management</li>
+                <li><strong>Cloudflare Workers:</strong> Proxy and orchestration for AI Coach requests</li>
+                <li><strong>OpenAI:</strong> Large language model processing of AI Coach messages and context (subject to <a href="https://openai.com/policies" target="_blank" rel="noopener noreferrer">OpenAI policies</a>)</li>
                 <li><strong>Google Analytics (website):</strong> Traffic and engagement analytics for this website</li>
             </ul>
-            <p>Each provider processes data according to its own policies.</p>
+            <p>AI Coach conversation threads may be stored server-side (Cloudflare KV) for approximately 30 days to maintain conversation continuity. Each provider processes data according to its own policies.</p>
 
             <h2>5. Data Sharing</h2>
             <p>We do not sell your personal information. We share information only when necessary to operate Replex, comply with legal obligations, enforce rights, or protect users and the service.</p>
@@ -131,6 +144,9 @@
                 <li>Manage app permissions in iOS Settings (Calendar, Health, Location)</li>
                 <li>Manage iCloud sync in iOS settings</li>
                 <li>Manage subscriptions in App Store subscription settings</li>
+                <li>Clear AI Coach chat history in the app</li>
+                <li>AI Coach requires an active Replex Pro subscription</li>
+                <li>Do not send sensitive medical information in AI Coach chat</li>
                 <li>Request support or data-related assistance by contacting us</li>
             </ul>
 
@@ -159,6 +175,15 @@
                 <div class="footer-section">
                     <h4>Replex</h4>
                     <p>Workout tracking that keeps training simple and consistent.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#results" class="footer-link">Why Replex</a></li>
+                        <li><a href="index.html#screenshots" class="footer-link">Screens</a></li>
+                        <li><a href="index.html#pricing" class="footer-link">Free vs Premium</a></li>
+                        <li><a href="changelog.html" class="footer-link">What's New</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
