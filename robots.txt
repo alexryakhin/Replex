@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexryakhin.github.io/Replex/sitemap.xml
+Sitemap: https://alexriakhin.com/Replex/sitemap.xml

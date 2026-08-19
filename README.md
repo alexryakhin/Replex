@@ -95,7 +95,8 @@ Download Replex on the App Store:
 For support, questions, or feature requests:
 - **Support Page**: [support.html](support.html)
 - **FAQ**: [faq.html](faq.html)
-- **Email**: bonney977@gmail.com
+- **Email**: support@alexriakhin.com
+- **Second Email**: hello@alexriakhin.com
 - **LinkedIn**: [xander1100001](https://www.linkedin.com/in/xander1100001)
 
 ## Legal
