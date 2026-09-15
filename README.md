@@ -115,13 +115,19 @@ The website uses CSS custom properties defined in `css/styles.css`. The primary 
 ### Screenshot Assets
 Primary screenshot set currently used:
 - `images/screenshots/home.png`
+- `images/screenshots/workout-map.png`
+- `images/screenshots/outdoor-run.png`
+- `images/screenshots/workout-logging.png`
 - `images/screenshots/workout-details.png`
+- `images/screenshots/share.png`
 - `images/screenshots/analytics-1.png`
 - `images/screenshots/analytics-2.png`
 - `images/screenshots/analytics-3.png`
+- `images/screenshots/planning.png`
+- `images/screenshots/templates-library.png`
 - `images/screenshots/template.png`
 - `images/screenshots/schedule.png`
-- `images/screenshots/share.png`
+- `images/screenshots/ai-coach.png`
 
 ## Browser Support
 
