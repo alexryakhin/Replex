@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{metaTitle}}</title>
+  <meta name="description" content="{{metaDescription}}">
+  <meta name="theme-color" content="#0B0B0C">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-itunes-app" content="app-id=6476805884">
+  <link rel="canonical" href="{{canonical}}">
+{{alternates}}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Replex">
+  <meta property="og:title" content="{{ogTitle}}">
+  <meta property="og:description" content="{{metaDescription}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{lang}}.png">
+  <meta property="og:locale" content="{{locale}}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{base}}favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{base}}favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="{{base}}favicons/apple-touch-icon.png">
+  <link rel="manifest" href="{{base}}favicons/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{base}}assets/css/site.css">
+  <link rel="preload" as="image" href="{{base}}assets/img/phone-log.webp" type="image/webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Replex",
+    "operatingSystem": "iOS, watchOS",
+    "applicationCategory": "HealthApplication",
+    "description": "{{metaDescription}}",
+    "url": "{{canonical}}",
+    "downloadUrl": "https://apps.apple.com/app/6476805884",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EMDY3PET3');
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">{{skip}}</a>
+
+{{>header}}
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-photo" aria-hidden="true">
+        <img src="{{base}}assets/img/photo-bench-spotter.webp" alt="" fetchpriority="high">
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">{{heroEyebrow}}</p>
+          <h1 class="headline headline-xl">{{heroTitle}}</h1>
+          <p class="lead">{{heroLead}}</p>
+          <div class="cta-row">
+            <a class="badge" href="{{appStore}}" data-cta="hero">
+              <img src="{{appStoreBadge}}" alt="{{appStoreBadgeAlt}}" width="180" height="60">
+            </a>
+          </div>
+          <p class="note">{{heroNote}}</p>
+        </div>
+        <div class="hero-visual">
+          <img class="device phone hero-phone" src="{{base}}assets/img/phone-log.webp" alt="{{heroPhoneAlt}}" width="760" height="1554">
+          <img class="device watch hero-watch" src="{{base}}assets/img/watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817">
+          <img class="card card-gold hero-card" src="{{base}}assets/img/card-pr-record.webp" alt="{{heroCardAlt}}" width="900" height="276">
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Replex in numbers">
+      <div class="wrap stats-grid">
+        <div class="stat"><span class="stat-value">{{stat1Value}}</span><span class="stat-label">{{stat1Label}}</span></div>
+        <div class="stat"><span class="stat-value">{{stat2Value}}</span><span class="stat-label">{{stat2Label}}</span></div>
+        <div class="stat"><span class="stat-value">{{stat3Value}}</span><span class="stat-label">{{stat3Label}}</span></div>
+        <div class="stat"><span class="stat-value">{{stat4Value}}</span><span class="stat-label">{{stat4Label}}</span></div>
+      </div>
+    </section>
+
+    <!-- Logging -->
+    <section class="feature" id="log">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{logEyebrow}}</p>
+          <h2 class="headline">{{logTitle}}</h2>
+          <p class="lead">{{logLead}}</p>
+          <ul class="points">
+            <li>{{logPoint1}}</li>
+            <li>{{logPoint2}}</li>
+            <li>{{logPoint3}}</li>
+            <li>{{logPoint4}}</li>
+          </ul>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="{{base}}assets/img/phone-today.webp" alt="" width="760" height="1554" loading="lazy">
+          <img class="card card-gold card-over" src="{{base}}assets/img/card-plate-loader.webp" alt="{{logCardAlt}}" width="900" height="676" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Apple Watch -->
+    <section class="feature feature-flip feature-photo" id="watch">
+      <div class="feature-bg" aria-hidden="true"><img src="{{base}}assets/img/photo-pull-up.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{watchEyebrow}}</p>
+          <h2 class="headline">{{watchTitle}}</h2>
+          <p class="lead">{{watchLead}}</p>
+          <ul class="points">
+            <li>{{watchPoint1}}</li>
+            <li>{{watchPoint2}}</li>
+            <li>{{watchPoint3}}</li>
+            <li>{{watchPoint4}}</li>
+          </ul>
+        </div>
+        <div class="feature-visual watch-pair reveal">
+          <img class="device watch watch-a" src="{{base}}assets/img/watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817" loading="lazy">
+          <img class="device watch watch-b" src="{{base}}assets/img/watch-rest.webp" alt="{{watchAlt}}" width="520" height="817" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section class="feature" id="progress">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{progressEyebrow}}</p>
+          <h2 class="headline">{{progressTitle}}</h2>
+          <p class="lead">{{progressLead}}</p>
+          <ul class="points">
+            <li>{{progressPoint1}}</li>
+            <li>{{progressPoint2}}</li>
+            <li>{{progressPoint3}}</li>
+            <li>{{progressPoint4}}</li>
+          </ul>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="{{base}}assets/img/phone-lift.webp" alt="{{progressPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="{{base}}assets/img/card-volume-chart.webp" alt="{{progressCardAlt}}" width="900" height="533" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Coach -->
+    <section class="feature feature-flip feature-photo" id="coach">
+      <div class="feature-bg" aria-hidden="true"><img src="{{base}}assets/img/photo-overhead-woman.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{coachEyebrow}}</p>
+          <h2 class="headline">{{coachTitle}}</h2>
+          <p class="lead">{{coachLead}}</p>
+          <ul class="points">
+            <li>{{coachPoint1}}</li>
+            <li>{{coachPoint2}}</li>
+            <li>{{coachPoint3}}</li>
+            <li>{{coachPoint4}}</li>
+          </ul>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="{{base}}assets/img/phone-coach.webp" alt="{{coachPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-side" src="{{base}}assets/img/card-proposal-card.webp" alt="{{coachCardAlt}}" width="900" height="1209" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section class="feature" id="plans">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{plansEyebrow}}</p>
+          <h2 class="headline">{{plansTitle}}</h2>
+          <p class="lead">{{plansLead}}</p>
+          <ul class="points">
+            <li>{{plansPoint1}}</li>
+            <li>{{plansPoint2}}</li>
+            <li>{{plansPoint3}}</li>
+          </ul>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="{{base}}assets/img/phone-plan.webp" alt="{{plansPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="{{base}}assets/img/card-template-card.webp" alt="{{plansCardAlt}}" width="900" height="362" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Share -->
+    <section class="feature feature-flip feature-photo" id="share">
+      <div class="feature-bg" aria-hidden="true"><img src="{{base}}assets/img/photo-chalk-woman.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">{{shareEyebrow}}</p>
+          <h2 class="headline">{{shareTitle}}</h2>
+          <p class="lead">{{shareLead}}</p>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="card card-volt share-card" src="{{base}}assets/img/card-share-card.webp" alt="{{shareCardAlt}}" width="900" height="1583" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Also -->
+    <section class="also">
+      <div class="wrap">
+        <h2 class="headline headline-md reveal">{{alsoTitle}}</h2>
+        <div class="also-grid">
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.2 5.2 0 0 1 12 6.6 5.2 5.2 0 0 1 21.3 12C19 16.6 12 21 12 21z"/></svg>
+            <h3>{{also1Title}}</h3><p>{{also1Text}}</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M9.5 5.5h5"/></svg>
+            <h3>{{also2Title}}</h3><p>{{also2Text}}</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8.5 4.8 4.8 0 0 1 17.5 18z"/><path d="m9.5 13 2 2 3.5-4"/></svg>
+            <h3>{{also3Title}}</h3><p>{{also3Text}}</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M8 8.5h8l-1 6h-2l-.5 7h-1L11 14.5H9z"/></svg>
+            <h3>{{also4Title}}</h3><p>{{also4Text}}</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12h19M5 8v8M8 6.5v11M16 6.5v11M19 8v8"/></svg>
+            <h3>{{also5Title}}</h3><p>{{also5Text}}</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" class="fill"/></svg>
+            <h3>{{also6Title}}</h3><p>{{also6Text}}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <h2 class="headline headline-md reveal">{{pricingTitle}}</h2>
+        <div class="plans-grid">
+          <article class="plan reveal">
+            <h3 class="plan-name">{{freeName}}</h3>
+            <p class="plan-tagline">{{freeTagline}}</p>
+            <ul class="points">
+              <li>{{free1}}</li><li>{{free2}}</li><li>{{free3}}</li><li>{{free4}}</li><li>{{free5}}</li>
+            </ul>
+          </article>
+          <article class="plan plan-pro reveal">
+            <h3 class="plan-name"><span class="pro-mark">{{proName}}</span></h3>
+            <p class="plan-tagline">{{proTagline}}</p>
+            <ul class="points">
+              <li>{{pro1}}</li><li>{{pro2}}</li><li>{{pro3}}</li><li>{{pro4}}</li><li>{{pro5}}</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note center">{{pricingNote}}</p>
+      </div>
+    </section>
+
+    <!-- Final call to action -->
+    <section class="cta">
+      <div class="cta-photo" aria-hidden="true"><img src="{{base}}assets/img/photo-deadlift-man.webp" alt="" loading="lazy"></div>
+      <div class="wrap cta-inner reveal">
+        <img class="cta-icon" src="{{base}}assets/img/app-icon.webp" alt="" width="96" height="96" loading="lazy">
+        <h2 class="headline headline-lg">{{ctaTitle}}</h2>
+        <p class="lead">{{ctaLead}}</p>
+        <a class="badge" href="{{appStore}}" data-cta="footer">
+          <img src="{{appStoreBadge}}" alt="{{appStoreBadgeAlt}}" width="180" height="60" loading="lazy">
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="wrap narrow">
+        <h2 class="headline headline-md reveal">{{faqTitle}}</h2>
+        <details><summary>{{faq1Q}}</summary><p>{{faq1A}}</p></details>
+        <details><summary>{{faq2Q}}</summary><p>{{faq2A}}</p></details>
+        <details><summary>{{faq3Q}}</summary><p>{{faq3A}}</p></details>
+        <details><summary>{{faq4Q}}</summary><p>{{faq4A}}</p></details>
+        <details><summary>{{faq5Q}}</summary><p>{{faq5A}}</p></details>
+        <p class="more"><a href="{{root}}faq.html">{{faqMore}} →</a></p>
+      </div>
+    </section>
+  </main>
+
+{{>footer}}
+
+  <script src="{{base}}assets/js/site.js" defer></script>
+</body>
+</html>

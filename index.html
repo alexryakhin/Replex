@@ -1,391 +1,340 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9EMDY3PET3');
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Replex — Gym Tracker & AI Workout Planner for iPhone and Apple Watch</title>
+  <meta name="description" content="Log every set in seconds, see every record, and let an AI coach plan your week. Replex is the strength training tracker for iPhone and Apple Watch.">
+  <meta name="theme-color" content="#0B0B0C">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-itunes-app" content="app-id=6476805884">
+  <link rel="canonical" href="https://alexriakhin.com/Replex/">
+  <link rel="alternate" hreflang="en" href="https://alexriakhin.com/Replex/">
+  <link rel="alternate" hreflang="x-default" href="https://alexriakhin.com/Replex/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Replex">
+  <meta property="og:title" content="Replex — Get stronger every week">
+  <meta property="og:description" content="Log every set in seconds, see every record, and let an AI coach plan your week. Replex is the strength training tracker for iPhone and Apple Watch.">
+  <meta property="og:url" content="https://alexriakhin.com/Replex/">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-en.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Replex is an iPhone and Apple Watch workout tracker with a training map, AI Coach, templates, analytics, and iCloud sync. Start free — see what's new in 4.1.">
-    <meta name="keywords" content="workout tracker, fitness app, gym log, training map, apple watch workout, workout planner, AI coach">
-    <meta name="robots" content="index,follow,max-image-preview:large">
-    <link rel="canonical" href="https://alexriakhin.com/Replex/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Replex — Workout Tracker for iPhone &amp; Apple Watch">
-    <meta property="og:description" content="Plan workouts, log sets faster, see runs and gym sessions on a training map, and stay consistent with Replex 4.1.">
-    <meta property="og:url" content="https://alexriakhin.com/Replex/">
-    <meta property="og:image" content="https://alexriakhin.com/Replex/images/screenshots/workout-map.png">
-    <meta property="og:site_name" content="Replex">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Replex — Workout Tracker for iPhone &amp; Apple Watch">
-    <meta name="twitter:description" content="Plan workouts, log sets faster, see runs and gym sessions on a training map, and stay consistent with Replex 4.1.">
-    <meta name="twitter:image" content="https://alexriakhin.com/Replex/images/screenshots/workout-map.png">
-    <title>Replex — Workout Tracker for iPhone &amp; Apple Watch</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+  <link rel="manifest" href="favicons/site.webmanifest">
 
-    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="favicons/android-chrome-512x512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="preload" as="image" href="assets/img/phone-log.webp" type="image/webp">
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MobileApplication",
-      "name": "Replex",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "iOS",
-      "description": "Workout tracker and planner for iPhone and Apple Watch with a training map, templates, analytics, and AI Coach.",
-      "url": "https://alexriakhin.com/Replex/",
-      "downloadUrl": "https://apps.apple.com/app/6476805884",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Replex",
+    "operatingSystem": "iOS, watchOS",
+    "applicationCategory": "HealthApplication",
+    "description": "Log every set in seconds, see every record, and let an AI coach plan your week. Replex is the strength training tracker for iPhone and Apple Watch.",
+    "url": "https://alexriakhin.com/Replex/",
+    "downloadUrl": "https://apps.apple.com/app/6476805884",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EMDY3PET3');
+  </script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="favicons/android-chrome-192x192.png" alt="Replex Logo">
-                    <span>Replex</span>
-                </a>
-                <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <nav class="nav">
-                    <ul class="nav-links">
-                        <li><a href="#results" class="nav-link">Why Replex</a></li>
-                        <li><a href="#screenshots" class="nav-link">Screens</a></li>
-                        <li><a href="#pricing" class="nav-link">Free vs Premium</a></li>
-                        <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                        <li><a href="support.html" class="nav-link">Support</a></li>
-                    </ul>
-                    <a href="https://apps.apple.com/app/6476805884" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Replex</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+  <a class="skip" href="#main">Skip to content</a>
 
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="brand" href="./" aria-label="Replex">
+        <img src="assets/img/app-icon.webp" alt="" width="36" height="36">
+        <span>Replex</span>
+      </a>
+      <nav class="bar-nav" aria-label="Main">
+        <a href="#log">Features</a>
+        <a href="#watch">Apple Watch</a>
+        <a href="#coach">AI Coach</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-volt btn-small" href="https://apps.apple.com/app/id6476805884" data-cta="header">Download</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text fade-in">
-                    <p class="eyebrow">Workout tracker for iPhone &amp; Apple Watch<br><a href="changelog.html">What's new in 4.1</a></p>
-                    <h1>Stay consistent. Train smarter.</h1>
-                    <p>Log sets faster, see where you train on a map, and keep plans and progress in one place.</p>
-                    <ul class="hero-points">
-                        <li>Training map for runs, rides, and gym sessions</li>
-                        <li>Faster logging on iPhone and Apple Watch</li>
-                        <li>AI Coach (Pro): plan your week — you confirm every change</li>
-                        <li>Free to start · 7-day Premium trial</li>
-                    </ul>
-                    <div class="hero-cta">
-                        <a href="https://apps.apple.com/app/6476805884" target="_blank" rel="noopener noreferrer">
-                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1276560000" alt="Download on the App Store" class="app-store-badge">
-                        </a>
-                    </div>
-                    <p class="hero-trust">Built for people who want results, not complexity.</p>
-                </div>
-                <div class="hero-image fade-in">
-                    <img src="images/screenshots/workout-map.png" alt="Workout map showing runs, rides, and gym sessions by place" class="iphone-screenshot">
-                </div>
-            </div>
+      <div class="hero-photo" aria-hidden="true">
+        <img src="assets/img/photo-bench-spotter.webp" alt="" fetchpriority="high">
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Strength training for iPhone &amp; Apple&nbsp;Watch</p>
+          <h1 class="headline headline-xl">Get <span class="v">stronger</span> every week</h1>
+          <p class="lead">Log every set in seconds, see every record, and let an AI coach plan your week. Replex turns training into progress you can see.</p>
+          <div class="cta-row">
+            <a class="badge" href="https://apps.apple.com/app/id6476805884" data-cta="hero">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" width="180" height="60">
+            </a>
+          </div>
+          <p class="note">Free to start. Pro adds the AI Coach, your own plans and full history.</p>
         </div>
+        <div class="hero-visual">
+          <img class="device phone hero-phone" src="assets/img/phone-log.webp" alt="Replex logging a bench press set with the plate loader" width="760" height="1554">
+          <img class="device watch hero-watch" src="assets/img/watch-log.webp" alt="Replex on Apple Watch, ready to log 185 lb for 5 reps" width="520" height="817">
+          <img class="card card-gold hero-card" src="assets/img/card-pr-record.webp" alt="New record: bench press 185 lb, 5 lb over your best" width="900" height="276">
+        </div>
+      </div>
     </section>
 
-    <section class="proof">
-        <div class="container">
-            <div class="proof-grid">
-                <div class="proof-item">
-                    <strong>150+</strong>
-                    <span>Exercises included</span>
-                </div>
-                <div class="proof-item">
-                    <strong>50+</strong>
-                    <span>Supported languages</span>
-                </div>
-                <div class="proof-item">
-                    <strong>iCloud</strong>
-                    <span>Sync across Apple devices</span>
-                </div>
-            </div>
-        </div>
+    <!-- Stats -->
+    <section class="stats" aria-label="Replex in numbers">
+      <div class="wrap stats-grid">
+        <div class="stat"><span class="stat-value">160</span><span class="stat-label">exercises with muscle maps</span></div>
+        <div class="stat"><span class="stat-value">44</span><span class="stat-label">ready-made plans</span></div>
+        <div class="stat"><span class="stat-value">1&nbsp;tap</span><span class="stat-label">to log a set on your wrist</span></div>
+        <div class="stat"><span class="stat-value">54</span><span class="stat-label">languages</span></div>
+      </div>
     </section>
 
-    <section id="results" class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Designed for Real Training Progress</h2>
-                <p>Everything in Replex helps you show up, finish the session, and see where your training is going.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/icons/goal.svg" alt="Training map icon">
-                    </div>
-                    <h3>See Where You Train</h3>
-                    <p>Open All Workouts to view runs, rides, and gym sessions on a training map — clustered by place as you zoom.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/icons/biceps-flexed.svg" alt="Template icon">
-                    </div>
-                    <h3>Start Fast with Templates + AI Coach</h3>
-                    <p>Use ready-made workouts immediately, and let AI coach your schedule and templates (Pro) — you confirm every change.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/icons/biceps-flexed.svg" alt="Apple Watch icon">
-                    </div>
-                    <h3>Log Faster on iPhone &amp; Watch</h3>
-                    <p>Edit sets inline on iPhone, one-tap logging on Apple Watch, and keep sessions moving when you’re in the gym.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/icons/cloud-check.svg" alt="Sync icon">
-                    </div>
-                    <h3>Train Across Your Apple Devices</h3>
-                    <p>iCloud sync, outdoor routes from Apple Health, and analytics that show strength and consistency clearly.</p>
-                </div>
-            </div>
+    <!-- Logging -->
+    <section class="feature" id="log">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">Logging</p>
+          <h2 class="headline">The <span class="v">gym tracker</span> that keeps up</h2>
+          <p class="lead">Dial the plates, log the set, beat last time. Replex remembers what you lifted and gets the next set ready before you are.</p>
+          <ul class="points">
+            <li>The plate loader shows exactly what goes on each side of the bar.</li>
+            <li>Every set starts from what you did last time, so you just confirm or add weight.</li>
+            <li>“This would be a PR” lights up before you lift, not after.</li>
+            <li>The rest timer starts on its own — a set time or until your heart rate recovers — and follows you to the Lock Screen and Dynamic Island.</li>
+          </ul>
         </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="assets/img/phone-today.webp" alt="" width="760" height="1554" loading="lazy">
+          <img class="card card-gold card-over" src="assets/img/card-plate-loader.webp" alt="Plate loader: 185 lb, 70 lb per side, marked as a possible record" width="900" height="676" loading="lazy">
+        </div>
+      </div>
     </section>
 
-    <section id="screenshots" class="screenshots">
-        <div class="container">
-            <div class="section-title">
-                <h2>Proof in Product</h2>
-                <p>From today’s session to the map of where you train — and the progress that keeps you going.</p>
-            </div>
-            <div class="screenshots-gallery">
-                <div class="screenshot-item">
-                    <img src="images/screenshots/home.png" alt="Today screen with Start workout and Apple Health imports" class="iphone-screenshot">
-                    <p class="screenshot-caption">Start quickly</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/workout-map.png" alt="Workout map with clustered activity pins" class="iphone-screenshot">
-                    <p class="screenshot-caption">Training map</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/outdoor-run.png" alt="Outdoor running workout with full-screen route" class="iphone-screenshot">
-                    <p class="screenshot-caption">Outdoor routes</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/workout-logging.png" alt="Inline set logging during an Upper Body workout" class="iphone-screenshot">
-                    <p class="screenshot-caption">Log every set</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/workout-details.png" alt="Completed workout details with muscle map and health metrics" class="iphone-screenshot">
-                    <p class="screenshot-caption">Review the session</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/share.png" alt="Share composer with muscle map story card" class="iphone-screenshot">
-                    <p class="screenshot-caption">Share your workout</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/analytics-1.png" alt="Analytics cardio running distance chart" class="iphone-screenshot">
-                    <p class="screenshot-caption">Measure consistency</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/analytics-2.png" alt="Strength progress chart for pull-ups" class="iphone-screenshot">
-                    <p class="screenshot-caption">See strength gains</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/analytics-3.png" alt="Muscle group distribution heatmap" class="iphone-screenshot">
-                    <p class="screenshot-caption">Muscle balance</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/planning.png" alt="Planning hub with templates and schedule" class="iphone-screenshot">
-                    <p class="screenshot-caption">Plan your week</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/templates-library.png" alt="Predefined workout templates library" class="iphone-screenshot">
-                    <p class="screenshot-caption">Ready-made templates</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/template.png" alt="Edit workout template with muscle map" class="iphone-screenshot">
-                    <p class="screenshot-caption">Build your own</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/schedule.png" alt="Schedule a workout with calendar options" class="iphone-screenshot">
-                    <p class="screenshot-caption">Schedule ahead</p>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshots/ai-coach.png" alt="AI Coach proposes a schedule and templates" class="iphone-screenshot">
-                    <p class="screenshot-caption">Plan with AI Coach</p>
-                </div>
-            </div>
+    <!-- Apple Watch -->
+    <section class="feature feature-flip feature-photo" id="watch">
+      <div class="feature-bg" aria-hidden="true"><img src="assets/img/photo-pull-up.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">Apple Watch</p>
+          <h2 class="headline">Log sets from your <span class="v">Apple&nbsp;Watch</span></h2>
+          <p class="lead">Leave the phone in your bag. Turn the crown to set weight and reps, tap LOG, and your iPhone stays in sync in real time.</p>
+          <ul class="points">
+            <li>Weight and reps on the crown, with a detent for every plate.</li>
+            <li>A rest countdown on your wrist, with a tap when it's time to lift.</li>
+            <li>Heart rate, zones and calories while you train, saved to Apple Health.</li>
+            <li>Start on either device. The other one picks it up.</li>
+          </ul>
         </div>
+        <div class="feature-visual watch-pair reveal">
+          <img class="device watch watch-a" src="assets/img/watch-log.webp" alt="Replex on Apple Watch, ready to log 185 lb for 5 reps" width="520" height="817" loading="lazy">
+          <img class="device watch watch-b" src="assets/img/watch-rest.webp" alt="Replex on Apple Watch: rest countdown" width="520" height="817" loading="lazy">
+        </div>
+      </div>
     </section>
 
-    <section id="pricing" class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Free to Start. Premium When You Are Ready.</h2>
-                <p>Get value immediately, then unlock advanced tools when you want more depth.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="feature-card">
-                    <h3>Free</h3>
-                    <ul class="feature-list">
-                        <li>5 starter workout templates</li>
-                        <li>150+ exercises and muscle map</li>
-                        <li>Workout logging, history, and training map</li>
-                        <li>Outdoor routes from Apple Health</li>
-                        <li>iCloud sync support</li>
-                    </ul>
-                </div>
-                <div class="feature-card feature-card-premium">
-                    <h3>Premium</h3>
-                    <ul class="feature-list">
-                        <li>Apple Watch workout sessions</li>
-                        <li>Advanced analytics dashboard</li>
-                        <li>AI Coach (Pro) — chat, plan your week, confirm before Apply</li>
-                        <li>Unlimited and custom templates</li>
-                        <li>Calendar-based workout planning</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Progress -->
+    <section class="feature" id="progress">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">Progress</p>
+          <h2 class="headline">Watch every rep become <span class="v">progress</span></h2>
+          <p class="lead">Volume that climbs week after week, every record you set, and the trend of every lift — so you know the work is paying off.</p>
+          <ul class="points">
+            <li>Weekly volume, sessions and your weekly goal at a glance.</li>
+            <li>Records for every exercise, like your heaviest weight and most reps.</li>
+            <li>A chart for each lift, from your first session to today.</li>
+            <li>Weekly and monthly recaps you can share.</li>
+          </ul>
         </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="assets/img/phone-lift.webp" alt="Bench press progress chart in Replex" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="assets/img/card-volume-chart.webp" alt="Volume chart: 8 weeks of rising weekly volume" width="900" height="533" loading="lazy">
+        </div>
+      </div>
     </section>
 
-    <section class="mini-faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Common Questions</h2>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">Can I use Replex for free?</div>
-                    <div class="faq-answer">Yes. You can track workouts and use core features without paying.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Is there a premium trial?</div>
-                    <div class="faq-answer">Yes. Premium includes a 7-day trial so you can test all advanced features.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I cancel anytime?</div>
-                    <div class="faq-answer">Yes. Subscriptions are managed in the App Store and can be canceled anytime.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is AI Coach?</div>
-                    <div class="faq-answer">AI Coach (Pro) reads your training and proposes schedule/template changes. Nothing is applied until you confirm on your device.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is the training map?</div>
-                    <div class="faq-answer">In All Workouts, Replex can show runs, rides, and gym sessions on a map so you can see where you’ve been training. See <a href="changelog.html">What’s new in 4.1</a>.</div>
-                </div>
-            </div>
-            <p class="text-center"><a href="faq.html">See full FAQ</a></p>
+    <!-- Coach -->
+    <section class="feature feature-flip feature-photo" id="coach">
+      <div class="feature-bg" aria-hidden="true"><img src="assets/img/photo-overhead-woman.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">AI Coach · Pro</p>
+          <h2 class="headline">Your <span class="v">AI workout planner</span></h2>
+          <p class="lead">Ask for a week and get it on your calendar. The Coach reads your real training — sessions, records, runs — and plans around it.</p>
+          <ul class="points">
+            <li>“Plan next week: 3 strength days and 2 runs” becomes dated sessions, at the times you train.</li>
+            <li>It builds or edits templates from the exercise library and spaces muscle groups for recovery.</li>
+            <li>Ask about any workout or run and get a straight answer from your own numbers.</li>
+            <li>Nothing changes until you confirm it.</li>
+          </ul>
         </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="assets/img/phone-coach.webp" alt="Replex Coach chat planning a training week" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-side" src="assets/img/card-proposal-card.webp" alt="Coach proposal: five planned sessions for next week" width="900" height="1209" loading="lazy">
+        </div>
+      </div>
     </section>
 
+    <!-- Plans -->
+    <section class="feature" id="plans">
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">Plans</p>
+          <h2 class="headline">Plans built for <span class="v">hypertrophy</span></h2>
+          <p class="lead">Push, pull, legs, upper/lower, full body: 44 ready-made plans to start today, or build your own and put it on repeat.</p>
+          <ul class="points">
+            <li>Every plan shows the muscles it trains on a live muscle map.</li>
+            <li>Illustrated exercises with the muscles and equipment they use.</li>
+            <li>Schedule a plan once and it repeats on your calendar.</li>
+          </ul>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="device phone" src="assets/img/phone-plan.webp" alt="Replex plan screen with upcoming sessions" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="assets/img/card-template-card.webp" alt="Leg Day template card with its muscle map" width="900" height="362" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Share -->
+    <section class="feature feature-flip feature-photo" id="share">
+      <div class="feature-bg" aria-hidden="true"><img src="assets/img/photo-chalk-woman.webp" alt="" loading="lazy"></div>
+      <div class="wrap feature-grid">
+        <div class="feature-copy reveal">
+          <p class="eyebrow">Share</p>
+          <h2 class="headline">Show off the <span class="v">transformation</span></h2>
+          <p class="lead">Every finished workout becomes a story card with your volume, time and records. Post it, or keep it as proof.</p>
+        </div>
+        <div class="feature-visual reveal">
+          <img class="card card-volt share-card" src="assets/img/card-share-card.webp" alt="Story card: Push Day, 15,505 lb moved, 1 record" width="900" height="1583" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Also -->
+    <section class="also">
+      <div class="wrap">
+        <h2 class="headline headline-md reveal">Everything a lifter needs</h2>
+        <div class="also-grid">
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.2 5.2 0 0 1 12 6.6 5.2 5.2 0 0 1 21.3 12C19 16.6 12 21 12 21z"/></svg>
+            <h3>Runs and rides from Apple Health</h3><p>Cardio from any app shows up with route maps, pace and heart-rate zones.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M9.5 5.5h5"/></svg>
+            <h3>Live Activities</h3><p>Your set, rest and heart rate on the Lock Screen and in the Dynamic Island.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8.5 4.8 4.8 0 0 1 17.5 18z"/><path d="m9.5 13 2 2 3.5-4"/></svg>
+            <h3>iCloud sync</h3><p>Workouts, templates and plans on all your devices, private to you.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M8 8.5h8l-1 6h-2l-.5 7h-1L11 14.5H9z"/></svg>
+            <h3>Muscle maps</h3><p>See what a session trains before you start and what you've hit this week.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12h19M5 8v8M8 6.5v11M16 6.5v11M19 8v8"/></svg>
+            <h3>Made for every gym</h3><p>Kilograms, pounds or stones; bodyweight and timed exercises built in.</p>
+          </article>
+          <article class="tile reveal">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" class="fill"/></svg>
+            <h3>Your colors</h3><p>Light or dark, and three accents: Volt, Blue and Pink, with matching app icons.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <h2 class="headline headline-md reveal">Start free. <span class="v">Go Pro</span> when you want more.</h2>
+        <div class="plans-grid">
+          <article class="plan reveal">
+            <h3 class="plan-name">Free</h3>
+            <p class="plan-tagline">Everything you need to log and progress.</p>
+            <ul class="points">
+              <li>Unlimited workout logging with the plate loader</li><li>5 bodyweight plans and all 160 exercises</li><li>Records and progress for your last 5 sessions</li><li>5 workouts started from Apple Watch</li><li>Share cards in Graphite and Chalk</li>
+            </ul>
+          </article>
+          <article class="plan plan-pro reveal">
+            <h3 class="plan-name"><span class="pro-mark">Pro</span></h3>
+            <p class="plan-tagline">For lifters who plan ahead.</p>
+            <ul class="points">
+              <li>AI Coach: plans your week, answers from your data</li><li>All 44 ready-made plans, your own templates and a scheduled calendar</li><li>Full history with weekly, yearly and all-time views</li><li>Unlimited Apple Watch workouts</li><li>Every share theme, with the Pro mark</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note center">Pro is available monthly, yearly or as a one-time lifetime purchase in the app. Subscriptions can be canceled anytime in your Apple Account.</p>
+      </div>
+    </section>
+
+    <!-- Final call to action -->
     <section class="cta">
-        <div class="container">
-            <h2>Ready to Train with More Consistency?</h2>
-            <p>Start free now. Upgrade only if the premium tools help you train better.</p>
-            <a href="https://apps.apple.com/app/6476805884" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-        </div>
+      <div class="cta-photo" aria-hidden="true"><img src="assets/img/photo-deadlift-man.webp" alt="" loading="lazy"></div>
+      <div class="wrap cta-inner reveal">
+        <img class="cta-icon" src="assets/img/app-icon.webp" alt="" width="96" height="96" loading="lazy">
+        <h2 class="headline headline-lg">Your next PR <span class="v">starts today</span></h2>
+        <p class="lead">Download Replex and log your first workout in under a minute.</p>
+        <a class="badge" href="https://apps.apple.com/app/id6476805884" data-cta="footer">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" width="180" height="60" loading="lazy">
+        </a>
+      </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Replex</h4>
-                    <p>Workout tracking that keeps your training simple and consistent.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul class="footer-links">
-                        <li><a href="#results" class="footer-link">Why Replex</a></li>
-                        <li><a href="#screenshots" class="footer-link">Screens</a></li>
-                        <li><a href="#pricing" class="footer-link">Free vs Premium</a></li>
-                        <li><a href="changelog.html" class="footer-link">What's New</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="faq.html" class="footer-link">FAQ</a></li>
-                        <li><a href="support.html" class="footer-link">Contact Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Replex. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="wrap narrow">
+        <h2 class="headline headline-md reveal">Questions</h2>
+        <details><summary>Do I need an Apple Watch?</summary><p>No. Replex works fully on iPhone. With an Apple Watch you can log sets, run the rest timer and track heart rate from your wrist.</p></details>
+        <details><summary>Is Replex free?</summary><p>Yes. Replex is free to use: logging, the rest timer, 5 bodyweight plans, records for your recent sessions and 5 Apple Watch workouts. Replex Pro — monthly, yearly or a one-time lifetime purchase — adds the AI Coach, all 44 plans, your own templates and scheduling, full history and unlimited Watch workouts.</p></details>
+        <details><summary>Where is my data stored?</summary><p>On your devices and in your private iCloud. Workouts can also be saved to Apple Health. The AI Coach only sees what it needs to answer you, and only when you ask.</p></details>
+        <details><summary>Does it work with pounds?</summary><p>Yes: kilograms, pounds or stones, and the plate loader follows your unit.</p></details>
+        <details><summary>Which languages does Replex support?</summary><p>54, including English, Spanish, Portuguese, French, German, Japanese, Korean, Chinese, Arabic and Hebrew.</p></details>
+        <p class="more"><a href="faq.html">More questions →</a></p>
+      </div>
+    </section>
+  </main>
 
-    <a href="https://apps.apple.com/app/6476805884" class="mobile-sticky-cta" target="_blank" rel="noopener noreferrer">Get Replex</a>
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="./"><img src="assets/img/app-icon.webp" alt="" width="32" height="32" loading="lazy"><span>Replex</span></a>
+        <p>The strength training tracker for iPhone and Apple Watch.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="support.html">Support</a>
+        <a href="faq.html">FAQ</a>
+        <a href="changelog.html">What's new</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        const stickyCta = document.querySelector('.mobile-sticky-cta');
-        const hero = document.querySelector('.hero');
+    </div>
+    <div class="wrap foot-fine">
+      <p>© 2026 Aleksandr Riakhin. Apple Watch, iPhone and Apple Health are trademarks of Apple Inc.</p>
+      <p>Photos: Pexels</p>
+    </div>
+  </footer>
 
-        if (menuToggle && nav) {
-            menuToggle.addEventListener('click', function() {
-                const isActive = nav.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-                menuToggle.setAttribute('aria-expanded', isActive);
-            });
-
-            const navLinks = nav.querySelectorAll('.nav-link, .btn');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            document.addEventListener('click', function(event) {
-                const isClickInside = nav.contains(event.target) || menuToggle.contains(event.target);
-                if (!isClickInside && nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-
-        if (stickyCta && hero) {
-            const observer = new IntersectionObserver((entries) => {
-                const heroVisible = entries[0].isIntersecting;
-                if (heroVisible) {
-                    stickyCta.classList.remove('show');
-                } else {
-                    stickyCta.classList.add('show');
-                }
-            }, { threshold: 0.2 });
-            observer.observe(hero);
-        }
-    </script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{pageTitle}} — Replex</title>
+  <meta name="description" content="{{pageDescription}}">
+  <meta name="theme-color" content="#0B0B0C">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-itunes-app" content="app-id=6476805884">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Replex">
+  <meta property="og:title" content="{{pageTitle}} — Replex">
+  <meta property="og:description" content="{{pageDescription}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{lang}}.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{base}}favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{base}}favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="{{base}}favicons/apple-touch-icon.png">
+  <link rel="manifest" href="{{base}}favicons/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{base}}assets/css/site.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EMDY3PET3');
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">{{skip}}</a>
+{{>header}}
+  <main id="main" class="page">
+    <section class="page-hero">
+      <div class="wrap narrow">
+        <p class="eyebrow">{{pageEyebrow}}</p>
+        <h1 class="headline headline-md">{{pageHeading}}</h1>
+        <p class="lead">{{pageLead}}</p>
+      </div>
+    </section>
+    <div class="wrap narrow doc">
+{{content}}
+    </div>
+    <section class="page-cta">
+      <div class="wrap narrow page-cta-inner">
+        <img src="{{base}}assets/img/app-icon.webp" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <p class="page-cta-title">{{ogTitle}}</p>
+          <p class="note">{{footerTagline}}</p>
+        </div>
+        <a class="badge" href="{{appStore}}" data-cta="page">
+          <img src="{{appStoreBadge}}" alt="{{appStoreBadgeAlt}}" width="150" height="50" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+{{>footer}}
+  <script src="{{base}}assets/js/site.js" defer></script>
+</body>
+</html>

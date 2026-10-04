@@ -1,144 +1,38 @@
-# Replex - Marketing Website
+# Replex — website
 
-Marketing website for Replex, a comprehensive workout tracking and planning iOS app.
+Marketing site for [Replex](https://apps.apple.com/app/id6476805884), the strength training tracker
+for iPhone and Apple Watch. Static HTML served by GitHub Pages at https://alexriakhin.com/Replex/.
+This repository is the `ReplexWebsite` submodule of the app repository.
 
-## About
+## Landing page (5.0, "Chalk & Iron")
 
-Replex is a workout tracker and planner designed to help users achieve their fitness goals. This repository contains the marketing website that showcases the app's features, provides support resources, and links to the App Store download.
-
-## Project Structure
+The landing page is generated, one page per language:
 
 ```
-Replex/
-├── css/
-│   ├── reset.css          # CSS reset styles
-│   └── styles.css         # Main stylesheet with custom properties
-├── favicons/              # App icons and favicons
-├── images/
-│   ├── icons/             # SVG icons for features
-│   └── screenshots/       # App screenshots used on website/App Store story flow
-├── index.html             # Main landing page
-├── faq.html               # Frequently Asked Questions
-├── privacy.html           # Privacy Policy
-├── support.html      # Support contact page
-├── terms.html              # Terms of Service
-├── robots.txt              # Search crawler directives
-└── sitemap.xml             # XML sitemap for indexing
+src/landing.html          the template ({{key}} placeholders)
+src/locales/<lang>.json   strings for one language (HTML allowed; <span class="v"> = volt keyword)
+assets/css/site.css       styles (graphite canvas, volt accent, Archivo from Google Fonts)
+assets/js/site.js         header, reveal-on-scroll, language switcher, App Store click events
+assets/img/               WebP images and og-<lang>.png share cards
+tools/make_assets.py      device renders, UI cards, photos and the app icon/favicons, built from
+                          the app repo's docs/ASO/screenshots/source (US captures, pounds)
+tools/build_site.py       writes index.html (English) and <lang>/index.html for every other
+                          language (hreflang links, footer language switcher, share images,
+                          sitemap entries), then the inner pages from src/pages/
 ```
-
-## Features
-
-### App Features Highlighted
-- **Comprehensive Workout Management**: Create, edit, and manage custom workout templates
-- **Advanced Exercise System**: 150+ exercises across all muscle groups with muscle map visualization
-- **Smart Data Management**: iCloud Sync with CloudKit for seamless cross-device synchronization
-- **Calendar Integration**: Schedule workouts with EventKit integration
-- **Multi-language Support**: English, German, Spanish, French, Croatian, and Russian
-- **Dark Mode Support**: Automatic theme adaptation
-
-### Website Features
-- Responsive design for all devices
-- Modern UI with gradient accents
-- SEO-optimized meta tags
-- Accessible navigation and structure
-- Contact and support resources
-- Screenshot gallery aligned with App Store narrative
-
-## Tech Stack
-
-- **HTML5**: Semantic markup
-- **CSS3**: Custom properties, flexbox, grid, responsive design
-- **Vanilla JavaScript**: Mobile nav interaction and menu behavior
-- **Favicons**: Multiple sizes for various platforms
-
-## Setup
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd Replex
-```
-
-2. Open `index.html` in a web browser, or serve using a local web server:
 
 ```bash
-# Using Python 3
-python3 -m http.server 8000
-
-# Using Node.js http-server
-npx http-server
-
-# Using PHP
-php -S localhost:8000
+python3 tools/make_assets.py   # after new app captures
+python3 tools/build_site.py    # after editing the template or strings
+python3 -m http.server 8765    # preview at http://localhost:8765
 ```
 
-3. Navigate to `http://localhost:8000` in your browser
+To add a language, copy `src/locales/en.json` to `src/locales/<lang>.json`, translate the values
+(keep the keys and the `<span class="v">` markup), and run `build_site.py`.
 
-## Deployment
+## Inner pages
 
-This is a static website that can be deployed to any static hosting service:
-
-- **GitHub Pages**: Push to a repository and enable Pages in settings
-- **Netlify**: Drag and drop the folder or connect to Git
-- **Vercel**: Import repository or deploy via CLI
-- **Cloudflare Pages**: Connect repository for automatic deployments
-- **AWS S3 + CloudFront**: Upload files to S3 bucket with static hosting enabled
-
-## App Store
-
-Download Replex on the App Store:
-- **App Store URL**: https://apps.apple.com/app/6476805884
-- **Supported Platforms**: iOS 17.0+ (iPhone)
-
-## Support
-
-For support, questions, or feature requests:
-- **Support Page**: [support.html](support.html)
-- **FAQ**: [faq.html](faq.html)
-- **Email**: support@alexriakhin.com
-- **Second Email**: hello@alexriakhin.com
-- **LinkedIn**: [xander1100001](https://www.linkedin.com/in/xander1100001)
-
-## Legal
-
-- [Privacy Policy](privacy.html)
-- [Terms of Service](terms.html)
-
-## Customization
-
-### Colors
-The website uses CSS custom properties defined in `css/styles.css`. The primary accent color scheme uses a blue gradient:
-- `--accent-blue: #3854CF`
-- `--accent-blue-dark: #082AA8`
-- `--accent-gradient: linear-gradient(135deg, #3854CF 0%, #082AA8 100%)`
-
-### Screenshot Assets
-Primary screenshot set currently used:
-- `images/screenshots/home.png`
-- `images/screenshots/workout-map.png`
-- `images/screenshots/outdoor-run.png`
-- `images/screenshots/workout-logging.png`
-- `images/screenshots/workout-details.png`
-- `images/screenshots/share.png`
-- `images/screenshots/analytics-1.png`
-- `images/screenshots/analytics-2.png`
-- `images/screenshots/analytics-3.png`
-- `images/screenshots/planning.png`
-- `images/screenshots/templates-library.png`
-- `images/screenshots/template.png`
-- `images/screenshots/schedule.png`
-- `images/screenshots/ai-coach.png`
-
-## Browser Support
-
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-- Responsive design tested on various screen sizes
-
-## License
-
-Copyright © 2026 Replex. All rights reserved.
-
----
-
-Made with ❤️ for fitness enthusiasts
+`faq.html`, `support.html`, `privacy.html`, `terms.html` and `changelog.html` are generated too (English):
+`src/pages/<name>.html` holds the page body after a first-line `<!-- {json} -->` metadata comment, and
+`src/page.html` is their shell. The header and footer of every page come from `src/partials/`.
+The App Store listing links to the privacy, terms and support pages, so keep those paths stable.
