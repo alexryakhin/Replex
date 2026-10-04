@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
-"""Build the landing page for every language in src/locales/, and the inner pages.
+"""Build every page of the site in every language.
 
-src/landing.html is the one template; src/locales/<lang>.json holds that language's strings
-(HTML allowed: <span class="v"> marks the volt keyword). English is written to index.html at the
-site root, every other language to <lang>/index.html, with hreflang links between them, a language
-switcher in the footer, and a 1200 x 630 share image per language (assets/img/og-<lang>.png,
-rendered with headless Chrome).
+Languages are the files in src/locales/: <site>.json, where <site> is the folder the language is
+published in (en at the site root, others at /<site>/ — e.g. de, pt-br, zh-hans). Each file holds
+the landing page strings plus "lang" (BCP 47, e.g. pt-BR), "dir" and "languageName" (the
+language's own name, shown in the header language picker).
 
-Inner pages (faq, support, privacy, terms, changelog) are English: src/pages/<name>.html holds
-the page body after a first-line comment with its metadata as JSON (pageTitle, pageDescription,
-pageEyebrow, pageHeading, pageLead); src/page.html is their shell. Both templates pull the shared
-header and footer from src/partials/ with {{>header}} / {{>footer}}.
+Pages:
+- the landing page: src/landing.html + the locale strings → index.html / <site>/index.html
+- inner pages (faq, support, changelog, privacy, terms): src/page.html (shell) + the page body in
+  src/pages/<name>.html (English) or src/pages/<site>/<name>.html (a translation). The body starts
+  with a <!-- {json} --> comment holding pageTitle, pageDescription, pageEyebrow, pageHeading and
+  pageLead. A language without a translation of a page gets the English body.
 
-    python3 tools/build_site.py            # every language
+Both templates pull the shared header and footer from src/partials/ ({{>header}}, {{>footer}}).
+App screenshots come from assets/img/<site>/ when tools/make_assets.py made localized ones, else
+from assets/img/ (English). Each language also gets a 1200 x 630 share image (og-<site>.png).
+
+    python3 tools/build_site.py            # everything
     python3 tools/build_site.py --no-og    # skip the share images
 """
+import hashlib
 import html
 import json
 import re
@@ -24,50 +30,98 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
 PARTIALS = {path.stem: path.read_text() for path in (SITE / "src/partials").glob("*.html")}
+ORIGIN = "https://alexriakhin.com/Replex/"
+APP_STORE = "https://apps.apple.com/app/id6476805884"
+DEFAULT = "en"
+PAGES = ["faq", "support", "changelog", "privacy", "terms"]
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900"
+# Archivo is Latin-only: each script gets a heavy companion face (see site.css › Scripts).
+SCRIPT_FONTS = {
+    "ru": "Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000",
+    "uk": "Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000",
+    "ar": "Cairo:wght@500..1000",
+    "he": "Heebo:wght@500..900",
+    "ja": "Noto+Sans+JP:wght@500..900",
+    "ko": "Noto+Sans+KR:wght@500..900",
+    "zh-hans": "Noto+Sans+SC:wght@500..900",
+    "zh-hant": "Noto+Sans+TC:wght@500..900",
+}
 
 
 def expand(template: str) -> str:
     return re.sub(r"\{\{>(\w+)\}\}\n?", lambda m: PARTIALS[m.group(1)], template)
 
 
-TEMPLATE = expand((SITE / "src/landing.html").read_text())
-PAGE = expand((SITE / "src/page.html").read_text())
-ORIGIN = "https://alexriakhin.com/Replex/"
-APP_STORE = "https://apps.apple.com/app/id6476805884"
-DEFAULT = "en"
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+def asset_version(*paths: str) -> str:
+    """Short content hash for cache-busting ?v= on the stylesheet and script."""
+    digest = hashlib.sha1()
+    for path in paths:
+        digest.update((SITE / path).read_bytes())
+    return digest.hexdigest()[:8]
+
+
+LANDING = expand((SITE / "src/landing.html").read_text())
+SHELL = expand((SITE / "src/page.html").read_text())
 
 
 def load_locales() -> dict:
-    locales = {}
-    for path in sorted((SITE / "src/locales").glob("*.json")):
-        locales[path.stem] = json.loads(path.read_text())
-    return dict(sorted(locales.items(), key=lambda item: (item[0] != DEFAULT, item[0])))
+    locales = {path.stem: json.loads(path.read_text()) for path in (SITE / "src/locales").glob("*.json")}
+    english = locales[DEFAULT]
+    for site, strings in locales.items():
+        missing = [key for key in english if key not in strings]
+        if missing:
+            print(f"warning: {site} is missing {len(missing)} strings, using English: {', '.join(missing[:6])}…")
+            locales[site] = {**english, **strings}
+    # English (US) first, then other English variants, then everything else alphabetically.
+    return dict(sorted(locales.items(), key=lambda item: (item[0] != DEFAULT, not item[0].startswith("en"), item[0])))
 
 
-def page_url(lang: str) -> str:
-    return ORIGIN if lang == DEFAULT else f"{ORIGIN}{lang}/"
+def folder(site: str) -> str:
+    return "" if site == DEFAULT else f"{site}/"
 
 
-def alternates(locales: dict) -> str:
-    lines = [f'  <link rel="alternate" hreflang="{lang}" href="{page_url(lang)}">' for lang in locales]
-    lines.append(f'  <link rel="alternate" hreflang="x-default" href="{page_url(DEFAULT)}">')
+def page_url(site: str, filename: str = "") -> str:
+    return f"{ORIGIN}{folder(site)}{filename}"
+
+
+def alternates(locales: dict, filename: str) -> str:
+    # A locale can stand for several regions ("hreflangs", e.g. English (UK) for GB, AU, NZ, IE, IN).
+    lines = [
+        f'  <link rel="alternate" hreflang="{code}" href="{page_url(site, filename)}">'
+        for site, strings in locales.items()
+        for code in strings.get("hreflangs", [strings["lang"]])
+    ]
+    lines.append(f'  <link rel="alternate" hreflang="x-default" href="{page_url(DEFAULT, filename)}">')
     return "\n".join(lines)
 
 
-def switcher(locales: dict, current: str, base: str) -> str:
-    if len(locales) < 2:
-        return ""
-    options = []
-    for lang, strings in locales.items():
-        href = base if lang == DEFAULT else f"{base}{lang}/"
-        selected = " selected" if lang == current else ""
-        options.append(f'          <option value="{href}" lang="{lang}"{selected}>{strings["languageName"]}</option>')
-    label = html.escape(locales[current]["footerLanguage"])
+GLOBE = (
+    '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" '
+    'fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s'
+    '-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z" fill="none" stroke="currentColor" '
+    'stroke-width="1.8"/></svg>'
+)
+
+
+def language_picker(locales: dict, current: str, filename: str) -> str:
+    """Header dropdown linking to the same page in every language."""
+    base = "" if current == DEFAULT else "../"
+    items = []
+    for site, strings in locales.items():
+        href = f"{base}{folder(site)}{filename}" or "./"
+        current_attr = ' aria-current="page"' if site == current else ""
+        items.append(
+            f'          <li><a href="{href}" hreflang="{strings["lang"]}" lang="{strings["lang"]}"{current_attr}>'
+            f'{strings["languageName"]}</a></li>'
+        )
+    strings = locales[current]
+    code = strings["lang"].split("-")[0].upper()
     return (
-        '      <label class="lang-switch">\n'
-        f'        <span class="visually-hidden">{label}</span>\n'
-        f'        <select aria-label="{label}">\n' + "\n".join(options) + "\n        </select>\n      </label>"
+        '      <details class="lang">\n'
+        f'        <summary aria-label="{html.escape(strings["footerLanguage"])}">{GLOBE}'
+        f'<span class="lang-name">{strings["languageName"]}</span><span class="lang-code">{code}</span></summary>\n'
+        '        <ul>\n' + "\n".join(items) + "\n        </ul>\n      </details>"
     )
 
 
@@ -79,7 +133,7 @@ def fill(template: str, values: dict, where: str) -> str:
         return values[key]
 
     page = re.sub(r"\{\{(\w+)\}\}", value, template)
-    # Attributes can't carry markup: strip tags/entities inside alt="…" and content="…".
+    # Attributes can't carry markup: strip tags inside alt="…", content="…" and aria-label="…".
     return re.sub(
         r'((?:alt|content|aria-label)=")([^"]*)(")',
         lambda m: m.group(1) + re.sub(r"<[^>]+>", "", m.group(2)) + m.group(3),
@@ -87,101 +141,133 @@ def fill(template: str, values: dict, where: str) -> str:
     )
 
 
-def render(lang: str, locales: dict) -> str:
-    strings = locales[lang]
-    base = "" if lang == DEFAULT else "../"
-    values = dict(strings)
+def common_values(site: str, locales: dict, filename: str) -> dict:
+    base = "" if site == DEFAULT else "../"
+    localized_shots = (SITE / "assets/img" / site / "phone-log.webp").exists()
+    values = dict(locales[site])
     values.update(
+        site=site,
         base=base,
-        root=base,
-        home="./",
-        navBase="",
-        canonical=page_url(lang),
-        appStore=APP_STORE,
-        alternates=alternates(locales),
-        languageSwitcher=switcher(locales, lang, base),
-    )
-    return fill(TEMPLATE, values, lang)
-
-
-def render_page(source: Path, locales: dict) -> str:
-    """An inner page (English, at the site root) from src/pages/<name>.html."""
-    text = source.read_text()
-    meta_match = re.match(r"<!--\s*(\{.*?\})\s*-->\n", text, re.S)
-    if not meta_match:
-        raise ValueError(f"{source.name}: first line must be a <!-- {{json}} --> metadata comment")
-    values = dict(locales[DEFAULT])
-    values.update(json.loads(meta_match.group(1)))
-    values.update(
-        base="",
         root="",
         home="./",
-        navBase="./",
-        canonical=f"{ORIGIN}{source.name}",
         appStore=APP_STORE,
-        content=text[meta_match.end():].rstrip(),
-        languageSwitcher="",
+        shots=f"{base}assets/img/{site}/" if localized_shots else f"{base}assets/img/",
+        assetVersion=asset_version("assets/css/site.css", "assets/js/site.js"),
+        fontsHref=FONTS + (f"&family={SCRIPT_FONTS[site]}" if site in SCRIPT_FONTS else "") + "&display=swap",
+        canonical=page_url(site, filename),
+        alternates=alternates(locales, filename),
+        languagePicker=language_picker(locales, site, filename),
+        # Only English (US) pages pick the visitor's language; translated pages never redirect.
+        autoLanguage=PARTIALS["autolang"] if site == DEFAULT else "",
     )
-    return fill(PAGE, values, source.name)
+    return values
 
 
-def share_image(lang: str, strings: dict):
+def render_landing(site: str, locales: dict) -> str:
+    values = common_values(site, locales, "")
+    values["navBase"] = ""
+    return fill(LANDING, values, f"{site}/index")
+
+
+BRITISH = [("colors", "colours"), ("Colors", "Colours"), ("color", "colour"), ("canceled", "cancelled"),
+           ("Canceled", "Cancelled"), ("favorite", "favourite"), ("personalized", "personalised"),
+           ("organize", "organise"), ("optimized", "optimised"), ("center", "centre")]
+
+
+def british(text: str) -> str:
+    """US → British spelling for English (UK) pages built from the English source."""
+    for us, uk in BRITISH:
+        text = re.sub(rf"\b{us}\b", uk, text)
+    return text
+
+
+def page_source(site: str, name: str) -> tuple[Path, bool]:
+    translated = SITE / "src/pages" / site / f"{name}.html"
+    if site != DEFAULT and translated.exists():
+        return translated, True
+    return SITE / "src/pages" / f"{name}.html", site == DEFAULT
+
+
+def render_page(site: str, name: str, locales: dict) -> str:
+    source, translated = page_source(site, name)
+    text = source.read_text()
+    meta = re.match(r"<!--\s*(\{.*?\})\s*-->\n", text, re.S)
+    if not meta:
+        raise ValueError(f"{source}: first line must be a <!-- {{json}} --> metadata comment")
+    values = common_values(site, locales, f"{name}.html")
+    values.update(json.loads(meta.group(1)))
+    body = text[meta.end():].rstrip()
+    if locales[site].get("spelling") == "british" and not (SITE / "src/pages" / site / f"{name}.html").exists():
+        body, translated = british(body), True
+        values.update({key: british(value) for key, value in json.loads(meta.group(1)).items()})
+    if not translated:
+        body = f'<div lang="en" dir="ltr">\n{body}\n</div>'
+    values.update(navBase="./", content=body)
+    return fill(SHELL, values, f"{site}/{name}")
+
+
+def share_image(site: str, strings: dict, shots: str):
     """1200 x 630 share card: headline left, the logging phone and record card right."""
-    page = SITE / f"assets/img/_og-{lang}.html"
-    page.write_text(f"""<!doctype html><html lang="{lang}" dir="{strings.get('dir', 'ltr')}"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=block" rel="stylesheet">
+    page = SITE / f"assets/img/_og-{site}.html"
+    page.write_text(f"""<!doctype html><html lang="{strings['lang']}" dir="{strings.get('dir', 'ltr')}"><head><meta charset="utf-8">
+<link href="{FONTS}{'&family=' + SCRIPT_FONTS[site] if site in SCRIPT_FONTS else ''}&display=block" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css">
 <style>
 body {{ margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #0B0B0C; }}
 .og {{ position: relative; width: 1200px; height: 630px; overflow: hidden; }}
 .og-photo {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; opacity: .45; }}
 .og::after {{ content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,11,12,.97) 0%, rgba(11,11,12,.8) 55%, rgba(11,11,12,.35) 100%); }}
-.og-copy {{ position: absolute; z-index: 1; left: 70px; top: 70px; width: 640px; }}
-.og-copy .headline {{ font-size: 124px; }}
+[dir="rtl"] .og::after {{ background: linear-gradient(270deg, rgba(11,11,12,.97) 0%, rgba(11,11,12,.8) 55%, rgba(11,11,12,.35) 100%); }}
+.og-copy {{ position: absolute; z-index: 1; inset-inline-start: 70px; top: 70px; width: 640px; }}
+.og-copy .headline {{ font-size: 118px; }}
 .og-brand {{ display: flex; gap: 14px; align-items: center; margin-top: 40px; }}
 .og-brand img {{ width: 64px; border-radius: 15px; }}
 .og-brand span {{ font-family: Archivo; font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: 34px; text-transform: uppercase; color: #F4F3EF; }}
-.og-phone {{ position: absolute; z-index: 1; width: 330px; right: 90px; top: 60px; transform: rotate(5deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,.7)); }}
-.og-card {{ position: absolute; z-index: 2; width: 380px; right: 200px; top: 360px; transform: rotate(-4deg); filter: drop-shadow(0 0 40px rgba(255,200,61,.3)) drop-shadow(0 20px 30px rgba(0,0,0,.8)); }}
+.og-phone {{ position: absolute; z-index: 1; width: 330px; inset-inline-end: 90px; top: 60px; transform: rotate(5deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,.7)); }}
+.og-card {{ position: absolute; z-index: 2; width: 380px; inset-inline-end: 200px; top: 360px; transform: rotate(-4deg); filter: drop-shadow(0 0 40px rgba(255,200,61,.3)) drop-shadow(0 20px 30px rgba(0,0,0,.8)); }}
 </style></head><body><div class="og">
 <img class="og-photo" src="photo-bench-spotter.webp">
 <div class="og-copy"><h1 class="headline">{strings['heroTitle']}</h1>
 <div class="og-brand"><img src="app-icon.webp"><span>Replex</span></div></div>
-<img class="og-phone" src="phone-log.webp"><img class="og-card" src="card-pr-record.webp">
+<img class="og-phone" src="{shots}phone-log.webp"><img class="og-card" src="{shots}card-pr-record.webp">
 </div></body></html>""")
-    out = SITE / f"assets/img/og-{lang}.png"
+    out = SITE / f"assets/img/og-{site}.png"
     subprocess.run([
         CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--window-size=1200,630",
         "--virtual-time-budget=4000", f"--screenshot={out}", f"file://{page}",
     ], check=True, capture_output=True)
     page.unlink()
-    print(f"assets/img/og-{lang}.png")
 
 
 def sitemap(locales: dict):
-    path = SITE / "sitemap.xml"
-    text = path.read_text()
-    text = re.sub(r"\s*<url>\s*<loc>https://alexriakhin\.com/Replex/[a-z]{2}(?:-[A-Za-z]+)?/</loc>.*?</url>", "", text, flags=re.S)
-    extra = "".join(
-        f"\n  <url>\n    <loc>{page_url(lang)}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>"
-        for lang in locales if lang != DEFAULT
+    urls = []
+    for site in locales:
+        urls.append((page_url(site), "weekly", "1.0" if site == DEFAULT else "0.9"))
+        for name in PAGES:
+            priority = "0.5" if name in ("privacy", "terms") else "0.7"
+            urls.append((page_url(site, f"{name}.html"), "monthly", priority))
+    body = "".join(
+        f"  <url>\n    <loc>{loc}</loc>\n    <changefreq>{freq}</changefreq>\n    <priority>{priority}</priority>\n  </url>\n"
+        for loc, freq, priority in urls
     )
-    text = text.replace("</urlset>", extra.lstrip("\n") + ("\n" if extra else "") + "</urlset>") if extra else text
-    path.write_text(text)
+    (SITE / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + body + "</urlset>\n"
+    )
 
 
 def main():
     locales = load_locales()
-    for lang, strings in locales.items():
-        out = SITE / ("index.html" if lang == DEFAULT else f"{lang}/index.html")
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(render(lang, locales))
-        print(out.relative_to(SITE))
+    for site, strings in locales.items():
+        out_dir = SITE / folder(site)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "index.html").write_text(render_landing(site, locales))
+        for name in PAGES:
+            (out_dir / f"{name}.html").write_text(render_page(site, name, locales))
         if "--no-og" not in sys.argv:
-            share_image(lang, strings)
-    for source in sorted((SITE / "src/pages").glob("*.html")):
-        (SITE / source.name).write_text(render_page(source, locales))
-        print(source.name)
+            shots = f"{site}/" if (SITE / "assets/img" / site / "phone-log.webp").exists() else ""
+            share_image(site, strings, shots)
+        print(f"{site}: index + {len(PAGES)} pages")
     sitemap(locales)
 
 

@@ -25,10 +25,23 @@
     items.forEach(function (item) { item.classList.add("in"); });
   }
 
-  var select = document.querySelector(".lang-switch select");
-  if (select) {
-    select.addEventListener("change", function () {
-      window.location.href = select.value;
+  // Language picker: remember the choice (the English pages' auto-redirect then follows it), and
+  // close when clicking outside or pressing Escape.
+  var picker = document.querySelector("details.lang");
+  if (picker) {
+    picker.querySelectorAll("a[hreflang]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        try { localStorage.setItem("replex.lang", link.getAttribute("hreflang").toLowerCase()); } catch (e) {}
+      });
+    });
+    document.addEventListener("click", function (event) {
+      if (picker.open && !picker.contains(event.target)) picker.open = false;
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && picker.open) {
+        picker.open = false;
+        picker.querySelector("summary").focus();
+      }
     });
   }
 

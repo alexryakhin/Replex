@@ -40,8 +40,9 @@ h1, h2, h3, p, ul { margin: 0; }
 .narrow { max-width: 860px; }
 .center { text-align: center; }
 
-.skip { position: absolute; left: -9999px; top: 8px; z-index: 100; padding: 10px 16px; background: var(--volt); color: var(--volt-ink); border-radius: 10px; }
-.skip:focus { left: 8px; }
+/* Hidden above the page (not off to the side, which widens right-to-left pages). */
+.skip { position: absolute; inset-inline-start: 8px; top: -80px; z-index: 100; padding: 10px 16px; background: var(--volt); color: var(--volt-ink); border-radius: 10px; }
+.skip:focus { top: 8px; }
 
 /* Type */
 .headline {
@@ -249,20 +250,21 @@ h1, h2, h3, p, ul { margin: 0; }
 /* FAQ */
 .faq { padding: clamp(80px, 10vw, 120px) 0; border-top: 1px solid var(--hairline); }
 .faq .headline { margin-bottom: 30px; }
-details { border-bottom: 1px solid var(--hairline); }
-summary {
+/* FAQ accordions (landing FAQ and inner pages only — the language picker is a <details> too). */
+:is(.faq, .doc) details { border-bottom: 1px solid var(--hairline); }
+:is(.faq, .doc) summary {
   list-style: none; cursor: pointer; padding: 22px 40px 22px 0; position: relative;
   font-size: 19px; font-weight: 600;
 }
-summary::-webkit-details-marker { display: none; }
-summary::after {
+:is(.faq, .doc) summary::-webkit-details-marker { display: none; }
+:is(.faq, .doc) summary::after {
   content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
   font-size: 26px; font-weight: 400; color: var(--volt); transition: transform .2s ease;
 }
-[dir="rtl"] summary { padding: 22px 0 22px 40px; }
-[dir="rtl"] summary::after { right: auto; left: 4px; }
-details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
-details p { padding: 0 0 22px; color: #C9C8C3; max-width: 46em; }
+[dir="rtl"] :is(.faq, .doc) summary { padding: 22px 0 22px 40px; }
+[dir="rtl"] :is(.faq, .doc) summary::after { right: auto; left: 4px; }
+:is(.faq, .doc) details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+:is(.faq, .doc) details p { padding: 0 0 22px; color: #C9C8C3; max-width: 46em; }
 .more { margin-top: 26px; }
 .more a { color: var(--volt); text-decoration: none; font-weight: 600; }
 
@@ -345,3 +347,49 @@ details p { padding: 0 0 22px; color: #C9C8C3; max-width: 46em; }
 .page-cta-title { font-family: var(--display); font-weight: 900; font-stretch: 62%; font-variation-settings: "wdth" 62; text-transform: uppercase; font-size: 30px; line-height: 1; }
 .page-cta-inner .note { margin-top: 6px; }
 .page-cta .badge img { height: 50px; }
+
+/* Language picker (header) */
+.lang { position: relative; }
+.lang summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 14px; font-weight: 600;
+  transition: color .15s ease, background .15s ease;
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 6px; height: 6px; border: solid currentColor; border-width: 0 1.6px 1.6px 0; transform: translateY(-2px) rotate(45deg); margin-inline-start: 3px; opacity: .7; transition: transform .2s ease; }
+.lang[open] summary::after { transform: translateY(1px) rotate(225deg); }
+.lang summary:hover, .lang[open] summary { color: var(--ink); background: var(--surface); }
+.lang summary:focus-visible { outline: 3px solid var(--volt); outline-offset: 2px; }
+.lang ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 60; list-style: none; margin: 0; padding: 6px;
+  min-width: 200px; max-height: min(70vh, 520px); overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+}
+.lang ul a { display: block; padding: 9px 12px; border-radius: 10px; color: var(--ink); text-decoration: none; font-size: 15px; }
+.lang ul a:hover { background: var(--raised); }
+.lang ul a[aria-current] { color: var(--volt); font-weight: 700; }
+.lang-code { display: none; }
+@media (max-width: 860px) { .lang { margin-inline-start: auto; } .bar-inner .btn { margin-left: 0; } }
+@media (max-width: 480px) { .lang .lang-name { display: none; } .lang .lang-code { display: inline; } .brand span { font-size: 16px; } .bar-inner { gap: 12px; } }
+
+/* Scripts Archivo doesn't cover: a heavy companion face per language (loaded only on those pages). */
+:lang(ru), :lang(uk) { --display: "Archivo", "Roboto Flex", system-ui, sans-serif; }
+:lang(ar) { --display: "Archivo", "Cairo", system-ui, sans-serif; }
+:lang(he) { --display: "Archivo", "Heebo", system-ui, sans-serif; }
+:lang(ja) { --display: "Archivo", "Noto Sans JP", "Hiragino Sans", sans-serif; }
+:lang(ko) { --display: "Archivo", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+:lang(zh-Hans) { --display: "Archivo", "Noto Sans SC", "PingFang SC", sans-serif; }
+:lang(zh-Hant) { --display: "Archivo", "Noto Sans TC", "PingFang TC", sans-serif; }
+:lang(ar) .headline, :lang(he) .headline { line-height: 1.12; letter-spacing: 0; }
+:lang(ja) .headline, :lang(ko) .headline, :lang(zh-Hans) .headline, :lang(zh-Hant) .headline,
+:lang(ja) .stat-value, :lang(ko) .stat-value, :lang(zh-Hans) .stat-value, :lang(zh-Hant) .stat-value {
+  line-height: 1.12; letter-spacing: 0; word-break: keep-all; font-weight: 900;
+}
+:lang(ar) .eyebrow, :lang(he) .eyebrow, :lang(ja) .eyebrow, :lang(ko) .eyebrow,
+:lang(zh-Hans) .eyebrow, :lang(zh-Hant) .eyebrow { letter-spacing: .04em; }
+[dir="rtl"] .points li { padding-left: 0; padding-right: 34px; }
+[dir="rtl"] .points li::before { left: auto; right: 0; }
+[dir="rtl"] .hero::before { background:
+    radial-gradient(900px 700px at 22% 60%, rgba(206, 255, 0, .10), transparent 70%),
+    linear-gradient(270deg, rgba(11, 11, 12, .96) 0%, rgba(11, 11, 12, .82) 45%, rgba(11, 11, 12, .35) 100%); }

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>新機能 — Replex</title>
+  <meta name="description" content="Replexのリリースノート：iPhoneアプリとApple Watchアプリの各バージョンでの変更点。">
+  <meta name="theme-color" content="#0B0B0C">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-itunes-app" content="app-id=6476805884">
+  <link rel="canonical" href="https://alexriakhin.com/Replex/ja/changelog.html">
+  <link rel="alternate" hreflang="en" href="https://alexriakhin.com/Replex/changelog.html">
+  <link rel="alternate" hreflang="en-GB" href="https://alexriakhin.com/Replex/en-gb/changelog.html">
+  <link rel="alternate" hreflang="en-AU" href="https://alexriakhin.com/Replex/en-gb/changelog.html">
+  <link rel="alternate" hreflang="en-NZ" href="https://alexriakhin.com/Replex/en-gb/changelog.html">
+  <link rel="alternate" hreflang="en-IE" href="https://alexriakhin.com/Replex/en-gb/changelog.html">
+  <link rel="alternate" hreflang="en-IN" href="https://alexriakhin.com/Replex/en-gb/changelog.html">
+  <link rel="alternate" hreflang="ar" href="https://alexriakhin.com/Replex/ar/changelog.html">
+  <link rel="alternate" hreflang="de-DE" href="https://alexriakhin.com/Replex/de/changelog.html">
+  <link rel="alternate" hreflang="es" href="https://alexriakhin.com/Replex/es/changelog.html">
+  <link rel="alternate" hreflang="fr" href="https://alexriakhin.com/Replex/fr/changelog.html">
+  <link rel="alternate" hreflang="he" href="https://alexriakhin.com/Replex/he/changelog.html">
+  <link rel="alternate" hreflang="it" href="https://alexriakhin.com/Replex/it/changelog.html">
+  <link rel="alternate" hreflang="ja" href="https://alexriakhin.com/Replex/ja/changelog.html">
+  <link rel="alternate" hreflang="ko" href="https://alexriakhin.com/Replex/ko/changelog.html">
+  <link rel="alternate" hreflang="nl-NL" href="https://alexriakhin.com/Replex/nl/changelog.html">
+  <link rel="alternate" hreflang="pl" href="https://alexriakhin.com/Replex/pl/changelog.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://alexriakhin.com/Replex/pt-br/changelog.html">
+  <link rel="alternate" hreflang="ru" href="https://alexriakhin.com/Replex/ru/changelog.html">
+  <link rel="alternate" hreflang="tr" href="https://alexriakhin.com/Replex/tr/changelog.html">
+  <link rel="alternate" hreflang="uk" href="https://alexriakhin.com/Replex/uk/changelog.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://alexriakhin.com/Replex/zh-hans/changelog.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://alexriakhin.com/Replex/zh-hant/changelog.html">
+  <link rel="alternate" hreflang="x-default" href="https://alexriakhin.com/Replex/changelog.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Replex">
+  <meta property="og:title" content="新機能 — Replex">
+  <meta property="og:description" content="Replexのリリースノート：iPhoneアプリとApple Watchアプリの各バージョンでの変更点。">
+  <meta property="og:url" content="https://alexriakhin.com/Replex/ja/changelog.html">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-ja.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../favicons/apple-touch-icon.png">
+  <link rel="manifest" href="../favicons/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Noto+Sans+JP:wght@500..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css?v=8e34d39e">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9EMDY3PET3');
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">本文へスキップ</a>
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="brand" href="./" aria-label="Replex">
+        <img src="../assets/img/app-icon.webp" alt="" width="36" height="36">
+        <span>Replex</span>
+      </a>
+      <nav class="bar-nav" aria-label="Main">
+        <a href="./#log">機能</a>
+        <a href="./#watch">Apple Watch</a>
+        <a href="./#coach">AIコーチ</a>
+        <a href="./#pricing">料金</a>
+        <a href="./#faq">よくある質問</a>
+      </nav>
+      <details class="lang">
+        <summary aria-label="言語"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-name">日本語</span><span class="lang-code">JA</span></summary>
+        <ul>
+          <li><a href="../changelog.html" hreflang="en" lang="en">English (US)</a></li>
+          <li><a href="../en-gb/changelog.html" hreflang="en-GB" lang="en-GB">English (UK)</a></li>
+          <li><a href="../ar/changelog.html" hreflang="ar" lang="ar">العربية</a></li>
+          <li><a href="../de/changelog.html" hreflang="de-DE" lang="de-DE">Deutsch</a></li>
+          <li><a href="../es/changelog.html" hreflang="es" lang="es">Español</a></li>
+          <li><a href="../fr/changelog.html" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="../he/changelog.html" hreflang="he" lang="he">עברית</a></li>
+          <li><a href="../it/changelog.html" hreflang="it" lang="it">Italiano</a></li>
+          <li><a href="../ja/changelog.html" hreflang="ja" lang="ja" aria-current="page">日本語</a></li>
+          <li><a href="../ko/changelog.html" hreflang="ko" lang="ko">한국어</a></li>
+          <li><a href="../nl/changelog.html" hreflang="nl-NL" lang="nl-NL">Nederlands</a></li>
+          <li><a href="../pl/changelog.html" hreflang="pl" lang="pl">Polski</a></li>
+          <li><a href="../pt-br/changelog.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+          <li><a href="../ru/changelog.html" hreflang="ru" lang="ru">Русский</a></li>
+          <li><a href="../tr/changelog.html" hreflang="tr" lang="tr">Türkçe</a></li>
+          <li><a href="../uk/changelog.html" hreflang="uk" lang="uk">Українська</a></li>
+          <li><a href="../zh-hans/changelog.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+          <li><a href="../zh-hant/changelog.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        </ul>
+      </details>
+      <a class="btn btn-volt btn-small" href="https://apps.apple.com/app/id6476805884" data-cta="header">ダウンロード</a>
+    </div>
+  </header>
+  <main id="main" class="page">
+    <section class="page-hero">
+      <div class="wrap narrow">
+        <p class="eyebrow">リリースノート</p>
+        <h1 class="headline headline-md"><span class="v">新機能</span></h1>
+        <p class="lead">Replexのすべてのアップデートを、新しい順に掲載しています。</p>
+      </div>
+    </section>
+    <div class="wrap narrow doc">
+<article class="release release-latest">
+<h2 class="release-title">Replex 5.0</h2>
+<p class="release-meta">2026年10月 · バージョン 5.0</p>
+<p>Replex 5.0では、アプリの見た目と使い心地を一から作り直しました。テーマは<strong>Chalk &amp; Iron</strong>。グラファイトのキャンバスに鮮やかなアクセントカラーをひとつ、スコアボードのような数字、そしてセッションで鍛える筋肉がひと目でわかる色づかい。Apple Watchアプリもデザインを一新し、AIコーチはプログラム全体を計画できるようになりました。</p>
+<h3>新しいデザイン</h3>
+<ul>
+<li>「今日」「プラン」「進捗」「コーチ」「プロフィール」を再設計。筋肉グループごとの色分けと、ひと目で読める大きな数字</li>
+<li>イラスト付きの種目と、新しくなった筋肉マップ</li>
+<li>外観モードの設定（システム、ライト、ダーク）と3つのアクセントカラー（Volt、ブルー、ピンク）、それぞれに合うアプリアイコン</li>
+<li>新しい起動画面とオンボーディング</li>
+</ul>
+<h3>Apple Watch</h3>
+<ul>
+<li>デザインを一新したWatchアプリ：Digital Crownで重量と回数を合わせ、「記録」をタップ</li>
+<li>−15 / +15とスキップを備えた休憩カウントダウンリング、リアルタイムの心拍数、ゾーン、消費カロリー</li>
+<li>アクセントカラーがWatchにも反映</li>
+</ul>
+<h3>記録と進捗</h3>
+<ul>
+<li>自重種目を「自重」または「自重 + 10 kg」と表示。ヘルスケアの体重または入力した体重を使ってボリュームに計上</li>
+<li>ワークアウト中に画面をオンのままにする設定（プロフィール › 設定）</li>
+<li>より見やすくなった進捗グラフと自己ベスト。数字はお使いの言語の表記で表示</li>
+</ul>
+<h3>AIコーチ（Pro）</h3>
+<ul>
+<li>毎週繰り返す複数週のプログラムを、選んだ日付から計画</li>
+<li>セッションの移動や入れ替えを1回の確認で実行し、カレンダーの重複もチェック</li>
+<li>お使いの器具と鍛えたい筋肉に合わせて種目を選択</li>
+<li>過去の日付にセッションを追加したり、カレンダーにすでにあるセッションを重複させたりしません</li>
+</ul>
+<h3>全体</h3>
+<ul>
+<li>アラビア語とヘブライ語のサポートを改善：矢印とレイアウトの左右反転、数字表記の統一</li>
+<li>Watchの同期と起動に関する多くの信頼性向上</li>
+</ul>
+</article>
+
+<article class="release">
+<h2 class="release-title">Replex 4.1</h2>
+<p class="release-meta">2026年9月 · バージョン 4.1</p>
+
+<p>Replex 4.1のテーマは<strong>よりすばやい記録</strong>と、<strong>どこでトレーニングしたか</strong>をよりわかりやすく見せること。さらに、屋外ワークアウトの改良、シェア機能の向上、分析機能の改善も行いました。</p>
+
+<h3>トレーニングマップ</h3>
+<ul>
+<li><strong>すべてのワークアウト</strong>を開くと、ラン、サイクリング、ジムでのセッションを地図上で確認できます</li>
+<li>ズームアウトするとピンがまとまり、ズームインするとアクティビティごとに分かれます</li>
+</ul>
+
+<h3>よりすばやい記録</h3>
+<ul>
+<li>ワークアウト中にiPhoneでセットをその場で編集</li>
+<li>Apple Watchでワンタップのセット記録</li>
+<li>1週間を組み立てるときの計画フローがよりスムーズに</li>
+</ul>
+
+<h3>屋外ワークアウトとヘルスケア</h3>
+<ul>
+<li>読み込んだ屋外アクティビティのルートを全画面で表示</li>
+<li>日付と時刻は、ワークアウトを記録した場所のタイムゾーンで表示</li>
+<li>設定から、期間を指定したヘルスケアのワークアウトの再読み込みがより簡単に</li>
+</ul>
+
+<h3>シェア、コーチ、細かな改良</h3>
+<ul>
+<li>ワークアウトのシェアカードとシェア作成画面を再設計</li>
+<li>すっきりしたコーチの空の状態と、新しくなった「このアプリについて」画面</li>
+<li>有酸素運動グラフのスクラブがより軽快に、心拍数の選択ラインがより見やすく</li>
+<li>トレーニング履歴が多くても「すべてのワークアウト」は快適に動作</li>
+</ul>
+</article>
+
+<article class="release">
+<h2 class="release-title">Replex 4.0</h2>
+<p class="release-meta">2026年8月 · バージョン 4.0.0</p>
+
+<p>Replex 4.0の中心は<strong>AIコーチ</strong>です。実際のワークアウト、テンプレート、カレンダーを読み取ってから答えるPro機能で、変更を提案し、何を保存するかはあなたが決めます。</p>
+
+<h3>AIコーチ（Pro）</h3>
+<ul>
+<li>トレーニング履歴、目標、スケジュールについて自然に会話</li>
+<li>会話からワークアウトテンプレートを作成・編集</li>
+<li>筋トレのセッションと今後の有酸素運動をひとつのプランで予定に追加</li>
+<li>すべての提案をプレビュー。カレンダーの予定とテンプレートの編集は、<strong>適用</strong>をタップしたときだけ反映されます</li>
+<li>詳細画面から、特定のワークアウトや読み込んだランについて質問</li>
+<li>接続が切れても復帰できる、途切れない会話</li>
+</ul>
+<p>AIコーチにはReplex Proのサブスクリプションが必要です。コーチのデータの処理方法については<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+
+<h3>iPhoneでトレーニング</h3>
+<ul>
+<li>Apple Watchがないときも、iPhoneで筋トレのワークアウトを記録</li>
+<li><strong>ライブアクティビティ</strong>でセッションをロック画面に表示</li>
+<li><strong>Siri</strong>：声でワークアウトを開始</li>
+</ul>
+
+<h3>分析とヘルスケア</h3>
+<ul>
+<li>分析期間に連動したランニングとウォーキングの<strong>距離グラフ</strong></li>
+<li>終了したワークアウトの<strong>インタラクティブな心拍数</strong>グラフ</li>
+<li>ヘルスケアから屋外アクティビティを<strong>ルートマップ</strong>付きで読み込み</li>
+<li>新しい屋外のランやサイクリングが読み込まれたときに通知</li>
+</ul>
+
+<h3>Apple Watchと信頼性</h3>
+<ul>
+<li>小さなWatchの画面でも見やすい指標と休憩タイマー</li>
+<li>Watchの起動とiPhoneとのミラー同期の信頼性を向上</li>
+<li>ライブアクティビティとワークアウト画面の改良</li>
+<li>アプリの起動とHealthKitの読み込みを高速化</li>
+</ul>
+
+<h3>カレンダーと計画</h3>
+<ul>
+<li>筋トレのテンプレートと並べて、今後の有酸素運動を予定に追加</li>
+<li>カレンダーのリストに筋トレと有酸素運動のアイコン</li>
+<li>ワークアウトのシェアカードと計画機能の改善</li>
+</ul>
+</article>
+    </div>
+    <section class="page-cta">
+      <div class="wrap narrow page-cta-inner">
+        <img src="../assets/img/app-icon.webp" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <p class="page-cta-title">Replex — 筋トレで毎週強くなる</p>
+          <p class="note">iPhoneとApple Watchのための筋トレ記録アプリ。</p>
+        </div>
+        <a class="badge" href="https://apps.apple.com/app/id6476805884" data-cta="page">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="App Storeからダウンロード" width="150" height="50" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="./"><img src="../assets/img/app-icon.webp" alt="" width="32" height="32" loading="lazy"><span>Replex</span></a>
+        <p>iPhoneとApple Watchのための筋トレ記録アプリ。</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="support.html">サポート</a>
+        <a href="faq.html">よくある質問</a>
+        <a href="changelog.html">新機能</a>
+        <a href="privacy.html">プライバシー</a>
+        <a href="terms.html">利用規約</a>
+      </nav>
+    </div>
+    <div class="wrap foot-fine">
+      <p>© 2026 Aleksandr Riakhin. Apple Watch、iPhone、Apple HealthはApple Inc.の商標です。</p>
+      <p>写真：Pexels</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js?v=8e34d39e" defer></script>
+</body>
+</html>

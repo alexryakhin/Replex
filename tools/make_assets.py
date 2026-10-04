@@ -20,6 +20,14 @@ CAPTURES = SRC / "captures-lb"
 CUTOUTS = SRC / "cutouts-lb"
 OUT = SITE / "assets/img"
 OUT.mkdir(parents=True, exist_ok=True)
+# Site language folder → app capture language (docs/ASO/screenshots/source/captures-<lang>/, kg).
+# English uses the US pounds set at the top level of assets/img/.
+SITE_CAPTURES = {
+    "en-gb": "",  # the English kilogram set (source/captures, source/cutouts)
+    "ar": "ar", "de": "de", "es": "es", "fr": "fr", "he": "he", "it": "it", "ja": "ja", "ko": "ko",
+    "nl": "nl", "pl": "pl", "pt-br": "pt-BR", "ru": "ru", "tr": "tr", "uk": "uk",
+    "zh-hans": "zh-Hans", "zh-hant": "zh-Hant",
+}
 
 
 def save(image: Image.Image, name: str, width: int, quality: int = 84):
@@ -106,7 +114,39 @@ display:flex;align-items:center;justify-content:center;overflow:hidden">
     png.unlink()
 
 
+UI_SHOTS = [
+    ("02-log", "phone-log"), ("01-today", "phone-today"), ("04-lift-bench", "phone-lift"),
+    ("05-coach-top", "phone-coach"), ("06-plan", "phone-plan"), ("07-completion-records", "phone-records"),
+    ("04-progress", "phone-progress"),
+]
+UI_CARDS = ["pr-record", "plate-loader", "volume-chart", "proposal-card", "share-card", "template-card",
+            "exercise-illustration", "records-list"]
+
+
+def localized(site: str, lang: str):
+    """The same UI renders from a language's own captures into assets/img/<site>/."""
+    global CAPTURES, CUTOUTS, OUT
+    suffix = f"-{lang}" if lang else ""
+    CAPTURES, CUTOUTS, OUT = SRC / f"captures{suffix}", SRC / f"cutouts{suffix}", SITE / "assets/img" / site
+    OUT.mkdir(parents=True, exist_ok=True)
+    for capture, name in UI_SHOTS:
+        phone(capture, name)
+    watch(CAPTURES / "03-watch-log.png", "watch-log")
+    watch(CAPTURES / "watch/02-rest.png", "watch-rest")
+    for name in UI_CARDS:
+        cutout(name)
+
+
 if __name__ == "__main__":
+    import sys
+    if "--localized" in sys.argv:
+        only = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
+        for site, lang in SITE_CAPTURES.items():
+            if only and site not in only:
+                continue
+            print(f"== {site}")
+            localized(site, lang)
+        sys.exit(0)
     for capture, name in [
         ("02-log", "phone-log"), ("01-today", "phone-today"), ("04-lift-bench", "phone-lift"),
         ("05-coach-top", "phone-coach"), ("06-plan", "phone-plan"), ("07-completion-records", "phone-records"),

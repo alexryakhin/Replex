@@ -1,0 +1,36 @@
+  <script>
+    // First visit to an English page: go to the visitor's language if the site has it. A language
+    // picked in the header is remembered and wins; crawlers and same-site navigation aren't moved.
+    (function () {
+      try {
+        if (/bot|crawl|spider|slurp|lighthouse|preview/i.test(navigator.userAgent)) return;
+        if (document.referrer && new URL(document.referrer).host === location.host) return;
+        // hreflang links are absolute production URLs (…/Replex/<page>); map them onto wherever the
+        // site is served (production, a local preview) via this page's canonical path.
+        var prefix = "/Replex/", canonical = document.querySelector('link[rel="canonical"]');
+        var current = new URL(canonical.href).pathname.slice(prefix.length);
+        var here = location.pathname.replace(/index\.html$/, "");
+        var root = here.slice(0, here.length - current.length);
+        var links = {}, saved = localStorage.getItem("replex.lang");
+        document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function (l) {
+          links[l.hreflang.toLowerCase()] = root + new URL(l.href).pathname.slice(prefix.length);
+        });
+        var target = saved ? links[saved] : null;
+        if (!saved) {
+          var wanted = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+          for (var i = 0; i < wanted.length && !target; i++) {
+            var tag = String(wanted[i] || "").toLowerCase(), primary = tag.split("-")[0];
+            if (primary === "en" && !links[tag]) break; // other English → stay on English (US)
+            if (primary === "zh") tag = /hant|-tw|-hk|-mo/.test(tag) ? "zh-hant" : "zh-hans";
+            target = links[tag] || links[primary] || null;
+            if (!target) {
+              for (var code in links) {
+                if (code.split("-")[0] === primary && code !== "x-default") { target = links[code]; break; }
+              }
+            }
+          }
+        }
+        if (target && target !== here) location.replace(target + location.hash);
+      } catch (e) {}
+    })();
+  </script>

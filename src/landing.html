@@ -10,12 +10,13 @@
   <meta name="apple-itunes-app" content="app-id=6476805884">
   <link rel="canonical" href="{{canonical}}">
 {{alternates}}
+{{autoLanguage}}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Replex">
   <meta property="og:title" content="{{ogTitle}}">
   <meta property="og:description" content="{{metaDescription}}">
   <meta property="og:url" content="{{canonical}}">
-  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{lang}}.png">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{site}}.png">
   <meta property="og:locale" content="{{locale}}">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -26,9 +27,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{base}}assets/css/site.css">
-  <link rel="preload" as="image" href="{{base}}assets/img/phone-log.webp" type="image/webp">
+  <link href="{{fontsHref}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{base}}assets/css/site.css?v={{assetVersion}}">
+  <link rel="preload" as="image" href="{{shots}}phone-log.webp" type="image/webp">
 
   <script type="application/ld+json">
   {
@@ -76,9 +77,9 @@
           <p class="note">{{heroNote}}</p>
         </div>
         <div class="hero-visual">
-          <img class="device phone hero-phone" src="{{base}}assets/img/phone-log.webp" alt="{{heroPhoneAlt}}" width="760" height="1554">
-          <img class="device watch hero-watch" src="{{base}}assets/img/watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817">
-          <img class="card card-gold hero-card" src="{{base}}assets/img/card-pr-record.webp" alt="{{heroCardAlt}}" width="900" height="276">
+          <img class="device phone hero-phone" src="{{shots}}phone-log.webp" alt="{{heroPhoneAlt}}" width="760" height="1554">
+          <img class="device watch hero-watch" src="{{shots}}watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817">
+          <img class="card card-gold hero-card" src="{{shots}}card-pr-record.webp" alt="{{heroCardAlt}}" width="900" height="276">
         </div>
       </div>
     </section>
@@ -108,8 +109,8 @@
           </ul>
         </div>
         <div class="feature-visual reveal">
-          <img class="device phone" src="{{base}}assets/img/phone-today.webp" alt="" width="760" height="1554" loading="lazy">
-          <img class="card card-gold card-over" src="{{base}}assets/img/card-plate-loader.webp" alt="{{logCardAlt}}" width="900" height="676" loading="lazy">
+          <img class="device phone" src="{{shots}}phone-today.webp" alt="" width="760" height="1554" loading="lazy">
+          <img class="card card-gold card-over" src="{{shots}}card-plate-loader.webp" alt="{{logCardAlt}}" width="900" height="676" loading="lazy">
         </div>
       </div>
     </section>
@@ -130,8 +131,8 @@
           </ul>
         </div>
         <div class="feature-visual watch-pair reveal">
-          <img class="device watch watch-a" src="{{base}}assets/img/watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817" loading="lazy">
-          <img class="device watch watch-b" src="{{base}}assets/img/watch-rest.webp" alt="{{watchAlt}}" width="520" height="817" loading="lazy">
+          <img class="device watch watch-a" src="{{shots}}watch-log.webp" alt="{{heroWatchAlt}}" width="520" height="817" loading="lazy">
+          <img class="device watch watch-b" src="{{shots}}watch-rest.webp" alt="{{watchAlt}}" width="520" height="817" loading="lazy">
         </div>
       </div>
     </section>
@@ -151,8 +152,8 @@
           </ul>
         </div>
         <div class="feature-visual reveal">
-          <img class="device phone" src="{{base}}assets/img/phone-lift.webp" alt="{{progressPhoneAlt}}" width="760" height="1554" loading="lazy">
-          <img class="card card-volt card-over" src="{{base}}assets/img/card-volume-chart.webp" alt="{{progressCardAlt}}" width="900" height="533" loading="lazy">
+          <img class="device phone" src="{{shots}}phone-lift.webp" alt="{{progressPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="{{shots}}card-volume-chart.webp" alt="{{progressCardAlt}}" width="900" height="533" loading="lazy">
         </div>
       </div>
     </section>
@@ -173,8 +174,8 @@
           </ul>
         </div>
         <div class="feature-visual reveal">
-          <img class="device phone" src="{{base}}assets/img/phone-coach.webp" alt="{{coachPhoneAlt}}" width="760" height="1554" loading="lazy">
-          <img class="card card-volt card-side" src="{{base}}assets/img/card-proposal-card.webp" alt="{{coachCardAlt}}" width="900" height="1209" loading="lazy">
+          <img class="device phone" src="{{shots}}phone-coach.webp" alt="{{coachPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-side" src="{{shots}}card-proposal-card.webp" alt="{{coachCardAlt}}" width="900" height="1209" loading="lazy">
         </div>
       </div>
     </section>
@@ -193,8 +194,8 @@
           </ul>
         </div>
         <div class="feature-visual reveal">
-          <img class="device phone" src="{{base}}assets/img/phone-plan.webp" alt="{{plansPhoneAlt}}" width="760" height="1554" loading="lazy">
-          <img class="card card-volt card-over" src="{{base}}assets/img/card-template-card.webp" alt="{{plansCardAlt}}" width="900" height="362" loading="lazy">
+          <img class="device phone" src="{{shots}}phone-plan.webp" alt="{{plansPhoneAlt}}" width="760" height="1554" loading="lazy">
+          <img class="card card-volt card-over" src="{{shots}}card-template-card.webp" alt="{{plansCardAlt}}" width="900" height="362" loading="lazy">
         </div>
       </div>
     </section>
@@ -209,7 +210,7 @@
           <p class="lead">{{shareLead}}</p>
         </div>
         <div class="feature-visual reveal">
-          <img class="card card-volt share-card" src="{{base}}assets/img/card-share-card.webp" alt="{{shareCardAlt}}" width="900" height="1583" loading="lazy">
+          <img class="card card-volt share-card" src="{{shots}}card-share-card.webp" alt="{{shareCardAlt}}" width="900" height="1583" loading="lazy">
         </div>
       </div>
     </section>
@@ -300,6 +301,6 @@
 
 {{>footer}}
 
-  <script src="{{base}}assets/js/site.js" defer></script>
+  <script src="{{base}}assets/js/site.js?v={{assetVersion}}" defer></script>
 </body>
 </html>

@@ -9,12 +9,14 @@
   <meta name="color-scheme" content="dark">
   <meta name="apple-itunes-app" content="app-id=6476805884">
   <link rel="canonical" href="{{canonical}}">
+{{alternates}}
+{{autoLanguage}}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Replex">
   <meta property="og:title" content="{{pageTitle}} — Replex">
   <meta property="og:description" content="{{pageDescription}}">
   <meta property="og:url" content="{{canonical}}">
-  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{lang}}.png">
+  <meta property="og:image" content="https://alexriakhin.com/Replex/assets/img/og-{{site}}.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" sizes="32x32" href="{{base}}favicons/favicon-32x32.png">
@@ -24,8 +26,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{base}}assets/css/site.css">
+  <link href="{{fontsHref}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{base}}assets/css/site.css?v={{assetVersion}}">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EMDY3PET3"></script>
   <script>
@@ -63,6 +65,6 @@
     </section>
   </main>
 {{>footer}}
-  <script src="{{base}}assets/js/site.js" defer></script>
+  <script src="{{base}}assets/js/site.js?v={{assetVersion}}" defer></script>
 </body>
 </html>
